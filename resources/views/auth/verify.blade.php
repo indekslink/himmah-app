@@ -1,28 +1,27 @@
-@extends('layouts.app')
+@extends('layouts.myauth')
+@section('title','Verifikasi Email Anda')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
 
-                <div class="card-body">
-                    @if (session('resent'))
-                        <div class="alert alert-success" role="alert">
-                            {{ __('A fresh verification link has been sent to your email address.') }}
-                        </div>
-                    @endif
+<img src="{{asset('/images/LOGO-HIMMAH.png')}}" alt="logo himmah" class="card-img-top mx-auto logo">
+<div class="text-center my-2">
 
-                    {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }},
-                    <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
-                        @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="fs-1 fw-bold">Verifikasi Alamat Email Anda</div>
+
 </div>
+<div class="card-body px-0">
+    @if (session('resent'))
+    <div class="alert alert-success" role="alert">
+        Link Verifikasi berhasil dikirim kembali ke alamat email Anda.
+
+    </div>
+    @endif
+    <form method="POST" action="{{ route('verification.resend') }}">
+        @csrf
+        <button type="submit" class="btn btn-link text-success p-0 m-0 align-baseline">Kirim Ulang</button>
+    </form>
+</div>
+
+
+
 @endsection

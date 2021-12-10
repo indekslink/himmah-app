@@ -1,65 +1,53 @@
-@extends('layouts.app')
+@extends('layouts.myauth')
+@section('title','Password Baru')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('password.update') }}">
-                        @csrf
+<img src="{{asset('/images/LOGO-HIMMAH.png')}}" alt="logo himmah" class="card-img-top mx-auto logo">
+<div class="text-center my-2">
 
-                        <input type="hidden" name="token" value="{{ $token }}">
+    <div class="fs-1 fw-bold">Masukkan Password Baru Anda</div>
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Reset Password') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
+<div class="card-body px-0">
+    <form method="POST" action="{{ route('password.update') }}">
+        @csrf
+        <input type="hidden" name="token" value="{{ $token }}">
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" value="{{ $email ?? old('email') }}" name="email" autofocus required autocomplete="current-password" readonly>
+            <label for="email">Email </label>
+            @error('email')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+        <div class="form-floating mb-3 toggle-password">
+            <input type="password" toggle-password="satu" class="form-control  @error('password') is-invalid @enderror" id="password" placeholder="name@example.com" name="password" required>
+            <label for="password">Password</label>
+            <i class="bi bi-eye-fill toggle-password" data-toggle-password="satu"></i>
+            @error('password')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+
+        <div class="form-floating mb-3 toggle-password">
+            <input type="password" toggle-password="dua" class="form-control  " id="password_confirmation" placeholder="name@example.com" name="password_confirmation" required autocomplete="new-password">
+            <label for="password">Konfirmasi Password</label>
+            <i class="bi bi-eye-fill toggle-password" data-toggle-password="dua"></i>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+
+            <button type="submit" class="btn d-block w-100 btn-success btn-lg">Simpan</button>
+
+        </div>
+
+    </form>
+</div>
+
+
+
 @endsection

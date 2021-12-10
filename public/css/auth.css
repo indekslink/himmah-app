@@ -1,0 +1,32 @@
+@import url(./_variabel.css);
+* {
+    font-family: var(--rubik) !important;
+}
+.parent {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+    padding: 1rem 0;
+}
+/* .parent .card {
+    width: 90vmin;
+} */
+.container img.logo {
+    width: calc(3vw + 150px);
+    height: calc(3vw + 150px);
+}
+/* .parent::after {
+    content: "";
+    z-index: 2;
+    inset: 0;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.);
+}
+.parent .card {
+    position: relative;
+    z-index: 3;
+
+    background-color: transparent !important;
+} */

@@ -1,0 +1,44 @@
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+    display: none !important;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+    -ms-overflow-style: none !important; /* IE and Edge */
+    scrollbar-width: none !important; /* Firefox */
+}
+.form-control:focus {
+    border-color: #14cf24 !important;
+}
+.form-floating.toggle-password {
+    position: relative;
+}
+i.toggle-password {
+    position: absolute;
+    top: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transform: translateY(-50%);
+    right: 1rem;
+    z-index: 2;
+}
+.my-border-radius {
+    border-radius: 10px !important;
+}
+i.icon-back {
+    position: fixed;
+    top: 0.5rem;
+    left: 0.5rem;
+    font-size: 3rem;
+    cursor: pointer;
+}
+.cursor-pointer {
+    cursor: pointer !important;
+}
+.nav-header {
+    background-color: white;
+}
+.owl-stage {
+    padding-left: 0 !important;
+}
