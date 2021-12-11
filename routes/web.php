@@ -2,9 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+
 use App\Http\Controllers\{
     HomeController,
 };
+// controller in a slide page folder
+use App\Http\Controllers\SlidePage\{
+    CompanyProfile,
+    CompassController
+};
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,8 +26,10 @@ use App\Http\Controllers\{
 
 
 Auth::routes(['verify' => true]);
-
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::group(['middleware' => ['auth', 'verified']], function () {
+Route::get('/company-profile', [CompanyProfile::class, 'index'])->name('company_profile');
+Route::get('/compass', [CompassController::class, 'index'])->name('compass');
+Route::group(['middleware' => ['auth']], function () {
     // Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 });

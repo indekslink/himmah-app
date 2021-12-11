@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'PT. Hijrah Makkah Madinah'),
+    'name' => env('APP_NAME', 'Himmah'),
 
     /*
     |--------------------------------------------------------------------------

@@ -48,6 +48,7 @@
 
 
     <!-- section slide -->
+
     <div class="owl-carousel mt-4 owl-theme slide-home">
         <div class="item">
             <img src="{{asset('/images/slide-home/makkah.jpeg')}}" alt="slide-image">
@@ -83,13 +84,23 @@
     <!-- section menu home -->
     <div class="menu-home mt-4">
 
-        <div class="row g-4">
+        <div class="row g-4 justify-content-center align-items-center">
+            <div class="col-4">
+                <div class="item">
+                    <!-- don't worry.  this anchor have been set to display block -->
+                    <a href="{{route('company_profile')}}">
+                        <i class="menu-image bi bi-bank2"></i>
+                        <div class="fs-6 lh-sm ">Profil Perusahaan</div>
+                    </a>
+                </div>
+
+            </div>
             <div class="col-4">
                 <div class="item">
                     <!-- don't worry.  this anchor have been set to display block -->
                     <a href="">
                         <img src="{{asset('/images/LOGO-HIMMAH-GROUP.png')}}" class="menu-image" alt="menu-image">
-                        <div class="fs-6 lh-sm mt-2">Himmah Group</div>
+                        <div class="fs-6 lh-sm ">Himmah Group</div>
                     </a>
                 </div>
 
@@ -99,7 +110,7 @@
                     <!-- don't worry.  this anchor have been set to display block -->
                     <a href="">
                         <img src="{{asset('/images/LOGO-HIMMAH-STORE.png')}}" class="menu-image" alt="menu-image">
-                        <div class="fs-6 lh-sm mt-2">Himmah Store</div>
+                        <div class="fs-6 lh-sm ">Himmah Store</div>
                     </a>
                 </div>
 
@@ -108,8 +119,8 @@
                 <div class="item">
                     <!-- don't worry.  this anchor have been set to display block -->
                     <a href="">
-                        <img src="{{asset('/images/LOGO-HIMMAH-GROUP.png')}}" class="menu-image" alt="menu-image">
-                        <div class="fs-6 lh-sm mt-2">Himmah Group</div>
+                        <i class="menu-image bi bi-house-door"></i>
+                        <div class="fs-6 lh-sm ">Pondok Megono</div>
                     </a>
                 </div>
 
@@ -117,33 +128,14 @@
             <div class="col-4">
                 <div class="item">
                     <!-- don't worry.  this anchor have been set to display block -->
-                    <a href="">
-                        <img src="{{asset('/images/LOGO-HIMMAH-GROUP.png')}}" class="menu-image" alt="menu-image">
-                        <div class="fs-6 lh-sm mt-2">Himmah Group</div>
+                    <a href="{{route('compass')}}">
+                        <i class="menu-image bi bi-compass"></i>
+                        <div class="fs-6 lh-sm ">Kompas</div>
                     </a>
                 </div>
 
             </div>
-            <div class="col-4">
-                <div class="item">
-                    <!-- don't worry.  this anchor have been set to display block -->
-                    <a href="">
-                        <img src="{{asset('/images/LOGO-HIMMAH-GROUP.png')}}" class="menu-image" alt="menu-image">
-                        <div class="fs-6 lh-sm mt-2">Himmah Group</div>
-                    </a>
-                </div>
 
-            </div>
-            <div class="col-4">
-                <div class="item">
-                    <!-- don't worry.  this anchor have been set to display block -->
-                    <a href="">
-                        <img src="{{asset('/images/LOGO-HIMMAH-GROUP.png')}}" class="menu-image" alt="menu-image">
-                        <div class="fs-6 lh-sm mt-2">Himmah Group</div>
-                    </a>
-                </div>
-
-            </div>
 
         </div>
     </div>
@@ -209,8 +201,11 @@
         transition: .5s ease;
     }
 
-    .owl-theme .owl-dots .owl-dot.active span,
     .owl-theme .owl-dots .owl-dot:hover span {
+        background-color: #D6D6D6 !important;
+    }
+
+    .owl-theme .owl-dots .owl-dot.active span {
         background-color: #198754 !important;
     }
 
@@ -225,9 +220,17 @@
         text-align: center;
     }
 
-    .menu-home .item img {
-        width: calc(10% + 60px);
-        height: calc(10% + 60px);
+    .menu-home .item img.menu-image {
+        margin-bottom: 1rem;
+    }
+
+    .menu-home .item .menu-image {
+        width: calc(10% + 80px);
+        height: calc(10% + 80px);
+        font-size: calc(10% + 80px);
+        color: #198754 !important;
+        ;
+        /* border-radius: 50%; */
         object-fit: cover;
 
     }
@@ -237,14 +240,13 @@
 @section('script')
 <script src="{{asset('/vendor/owl-carousel/dist/owl.carousel.min.js')}}"></script>
 <script>
-    $('.owl-carousel.slide-home').owlCarousel({
-        stagePadding: 20,
+    let owl = $('.owl-carousel.slide-home')
+    const stagePadding = 20;
+    owl.owlCarousel({
+        stagePadding,
         margin: 12,
         items: 1,
-        loop: true,
-        autoplay: true,
-        autoplayTimeout: 5000,
-        autoplayHoverPause: true,
+
         smartSpeed: 500,
         responsive: {
             0: {
@@ -252,5 +254,30 @@
             }
         }
     })
+    owl.on('changed.owl.carousel', function(event) {
+        const {
+            count,
+            index
+        } = event.item;
+        let padding = {};
+        if (index == 0) {
+            padding = {
+                'padding-left': '0',
+                'padding-right': stagePadding + 'px'
+            }
+        } else if (index === count - 1) {
+            padding = {
+                'padding-left': stagePadding * 2 + 'px',
+                'padding-right': '0'
+            }
+        } else {
+            padding = {
+                'padding-left': stagePadding + 'px',
+                'padding-right': stagePadding + 'px',
+            }
+        }
+        $('.owl-stage').css(padding)
+    })
+    $('.owl-stage').css('padding-left', '0')
 </script>
 @endsection
