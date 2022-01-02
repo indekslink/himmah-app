@@ -10,7 +10,7 @@
 
 </div>
 <div class="card-body px-0">
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ route('register') }}" onsubmit="toggleLoadingAction()">
         @csrf
         <div class="form-floating mb-3">
             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="name@example.com" name="name" autofocus required autocomplete="current-password" value="{{ old('name') }}">
@@ -22,7 +22,7 @@
             @enderror
         </div>
         <div class="form-floating mb-3">
-            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" name="email" value="{{ old('email') }}" required autocomplete="email">
+            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" name="email" value="{{ old('email') }}" required autocomplete="off">
             <label for="email">Email </label>
             @error('email')
             <span class="invalid-feedback" role="alert">
@@ -58,7 +58,7 @@
         </div>
         <div class="text-center">
 
-            Sudah punya akun? <a class="btn-link text-success text-decoration-none" href="{{ route('login') }}">Login disini </a>
+            Sudah punya akun? <a class="btn-link text-success text-decoration-none show-loading-logo-on-click" href="{{ route('login') }}">Login disini </a>
 
         </div>
     </form>

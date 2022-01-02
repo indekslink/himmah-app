@@ -20,7 +20,15 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'name',
         'email',
+        'email_verified_at',
         'password',
+        'address',
+        'status',
+        'gender',
+        'avatar',
+        'role_id',
+        'is_logged_in',
+        'status_user_id'
     ];
 
     /**
@@ -38,7 +46,26 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array
      */
+
+    public function isLoggedIn($bool)
+    {
+        $this->is_logged_in = $bool;
+        $this->save();
+    }
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+    public function status_user()
+    {
+        return $this->belongsTo(StatusUser::class);
+    }
+
+    public function store()
+    {
+        return $this->hasOne(Store::class);
+    }
 }

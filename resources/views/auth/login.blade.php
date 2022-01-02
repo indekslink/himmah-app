@@ -9,11 +9,17 @@
     <div class="fs-1 fw-bold">Login</div>
 
 </div>
+@error('credentials')
+<div class="alert alert-danger mt-4 alert-dismissible fade show" role="alert">
+    {{ $message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@enderror
 <div class="card-body px-0">
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('login') }}" onsubmit="toggleLoadingAction()">
         @csrf
         <div class="form-floating mb-3">
-            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" value="{{ old('email') }}" name="email" autofocus required autocomplete="current-password">
+            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" value="{{ old('email') }}" name="email" autocomplete="off" autofocus required>
             <label for="email">Email </label>
             @error('email')
             <span class="invalid-feedback" role="alert">
@@ -32,25 +38,30 @@
             @enderror
         </div>
 
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <div class="form-check3">
+        <div class="d-flex justify-content-end align-items-center mb-3">
+            <!-- <div class="form-check3">
                 <input class="form-check-input " type="checkbox" id="flexCheckDefault" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                 <label class="form-check-label" for="flexCheckDefault">
                     Remember Me
                 </label>
 
-            </div>
+            </div> -->
 
             @if (Route::has('password.request'))
-            <a class="btn-link text-success text-decoration-none" href="{{ route('password.request') }}">
+            <a class="btn-link text-success text-decoration-none show-loading-logo-on-click" href="{{ route('password.request') }}">
                 Lupa Password?
             </a>
             @endif
         </div>
         <button type="submit" class="btn w-100 btn-success mb-3 btn-lg">Login</button>
+        <div class="text-center mb-2">
+
+            Belum punya akun? <a class="btn-link text-decoration-none text-success show-loading-logo-on-click" href="{{ route('register') }}">Daftar disini </a>
+
+        </div>
         <div class="text-center">
 
-            Belum punya akun? <a class="btn-link text-decoration-none text-success" href="{{ route('register') }}">Daftar disini </a>
+            <a style="line-height:0;" class="btn-link text-decoration-none d-flex align-items-center justify-content-center text-success show-loading-logo-on-click" href="/"> <i class="bi bi-arrow-left-short fs-3"></i> Kembali ke Halaman Beranda </a>
 
         </div>
     </form>

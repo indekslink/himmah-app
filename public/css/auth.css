@@ -2,12 +2,14 @@
 * {
     font-family: var(--rubik) !important;
 }
+
 .parent {
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     overflow-x: hidden;
+    align-items: center;
     padding: 1rem 0;
 }
 /* .parent .card {
@@ -16,6 +18,13 @@
 .container img.logo {
     width: calc(3vw + 150px);
     height: calc(3vw + 150px);
+}
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
 }
 /* .parent::after {
     content: "";

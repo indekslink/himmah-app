@@ -3,8 +3,8 @@
 
 @section('content')
 <div class=" py-2 nav-header sticky-top text-center">
-  <i class="bi bi-arrow-left-short icon-back"></i>
-  <div class="fs-3 fw-bold">Kompas</div>
+  <i data-current-page="{{route('home')}}" class="bi bi-arrow-left-short icon-back"></i>
+  <div class="fs-4 fw-bold">Kompas</div>
 </div>
 <div style="height: 80vh;" class="d-flex justify-content-center align-items-center">
 

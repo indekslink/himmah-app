@@ -22,6 +22,21 @@
 </head>
 
 <body>
+    <div class="loading-action text-light">
+        <div class="bg-dark text-center p-3" style="border-radius: 10px;">
+
+            <div class="spinner-border " style="width: 2rem; height: 2rem;" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="fs-1 lh-1">Loading</div>
+        </div>
+    </div>
+    <div class="parent-loading">
+        <img src="{{asset('/images/LOGO-HIMMAH.png')}}" alt="logo-himmah">
+        <div class="display-4 fw-bold lh-sm font-logo">HIMMAH</div>
+        <div class="fs-4 text-muted lh-sm">PT. Hijrah Makkah Madinah</div>
+    </div>
+    @yield('button-back')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-8">
@@ -37,6 +52,7 @@
 
 
     <script src="{{asset('/js/script.js')}}"></script>
+
 </body>
 
 </html>

@@ -68,6 +68,9 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role_id' => 3, //user,
+            'status_user_id' => 1, //user
+            'avatar' => 'default.png' //user
         ]);
     }
 }

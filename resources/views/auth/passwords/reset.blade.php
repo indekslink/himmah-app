@@ -10,11 +10,11 @@
 
 </div>
 <div class="card-body px-0">
-    <form method="POST" action="{{ route('password.update') }}">
+    <form method="POST" action="{{ route('password.update') }}" onsubmit="toggleLoadingAction()">
         @csrf
         <input type="hidden" name="token" value="{{ $token }}">
         <div class="form-floating mb-3">
-            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" value="{{ $email ?? old('email') }}" name="email" autofocus required autocomplete="current-password" readonly>
+            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" value="{{ $email ?? old('email') }}" name="email" autofocus required autocomplete="off" readonly>
             <label for="email">Email </label>
             @error('email')
             <span class="invalid-feedback" role="alert">

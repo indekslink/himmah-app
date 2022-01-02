@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -36,5 +39,27 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+    public function login(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => ['required', 'string', 'email'],
+            'password' => ['required', 'string'],
+        ]);
+        if (User::whereEmail($request->email)->first()->is_logged_in == 1) {
+            return back()->withErrors([
+                'credentials' => 'Akun tersebut sedang digunakan oleh user selain Anda'
+            ]);
+        }
+        if (Auth::attempt($credentials, true)) {
+            $request->user()->isLoggedIn(true);
+            $request->session()->regenerate();
+
+            return redirect()->intended('/' . $request->email);
+        }
+
+        return back()->withErrors([
+            'credentials' => 'Email atau password anda salah.',
+        ]);
     }
 }
