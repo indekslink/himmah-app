@@ -78,10 +78,10 @@
 
     </div>
 </div>
+<div class="space-y bg-light "></div>
 @if(in_array(auth()->user()->role->name,$section_admin))
 <!-- Kontent Home -->
 
-<div class="space-y bg-light "></div>
 <div class="card menu my-2">
     <div class="card-header  sticky-top ps-0 fw-bold bg-white">
         <div class="fs-5">Menu Admin</div>

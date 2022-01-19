@@ -9,6 +9,7 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $with = ['store'];
     public function getRouteKeyName()
     {
         return 'slug';

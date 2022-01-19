@@ -4,31 +4,42 @@
 @section('content')
 <div>
     <!-- section header top -->
-    <div class="d-flex align-items-center py-2 bg-white flex-wrap nav-header sticky-top justify-content-between">
-        <div class="d-flex align-items-center logo-place">
-            <img src="{{asset('/images/LOGO-HIMMAH-STORE.png')}}" alt="logo himmah">
+    <div class=" py-2 bg-white shadow-sm nav-header fixed-top ">
+        <div class="container px-2">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10">
+                    <div class="d-flex align-items-center flex-wrap justify-content-between">
 
-            <div class="text-center">
-                <div class="fs-3 fw-bold font-logo lh-1">HIMMAH</div>
-                <div class="fs-5 font-logo">STORE</div>
+
+                        <div class="d-flex align-items-center logo-place">
+                            <img src="{{asset('/images/LOGO-HIMMAH-STORE.png')}}" alt="logo himmah">
+
+                            <div class="text-center">
+                                <div class="fs-3 fw-bold font-logo lh-1">HIMMAH</div>
+                                <div class="fs-5 font-logo">STORE</div>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+
+                            <i class="bi bi-search trigger-modal-search fs-1 me-2 cursor-pointer"></i>
+
+                        </div>
+
+                        <!-- <div class="">
+                            <div class="field-search">
+                                <i class="bi bi-search"></i>
+                                <input type="text" class="form-control ps-5" id="inputFieldSearch" placeholder="Cari Sesuatu ...">
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="d-flex align-items-center">
 
-            <i class="bi bi-cart fs-1 cursor-pointer"></i>
-
-        </div>
-
-        <div class="w-100 mt-2">
-            <div class="field-search">
-                <i class="bi bi-search"></i>
-                <input type="text" class="form-control ps-5" id="inputFieldSearch" placeholder="Cari Sesuatu ...">
-            </div>
-        </div>
     </div>
     <!-- end section header top -->
-
-    <div class="item mt-4">
+    <div style="margin-top:7rem"></div>
+    <div class="item mt-3 pt-md-3 pt-0">
         <div class="header-item mb-4">
             <div class="fs-5 text-uppercase text-success">kategori</div>
             <a href="" class="text-decoration-none text-muted ">Lihat Semua <i class="bi bi-chevron-right"></i></a>
@@ -42,7 +53,7 @@
                     <div class="parent-img bg-light">
                         <img src="{{avatar($c->gambar,'/images/store/kategori/')}}" alt="">
                     </div>
-                    <span class="mt-4">{{$c->nama}}</span>
+                    <span class="mt-4 text-center">{{$c->nama}}</span>
                 </div>
                 @endforeach
             </div>
@@ -72,81 +83,56 @@
         </div>
 
         <div class="konten-column">
-            <a href="" class="konten-card">
+
+            @foreach($products as $product)
+            <a href="{{route('detail_produk',[$product->store->slug,$product->slug])}}" class="konten-card">
                 <div class="card">
-                    <img src="{{asset('/images/store/al-quran.jfif')}}" alt="">
+                    <img src="{{avatar($product->gambar_utama,'/images/store/produk/')}}" alt="">
                     <div class="p-2 text">
-                        <div class="mb-2 lh-sm nama-produk">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo neque dolorem repudiandae iste! Dolorum molestiae tempora in numquam suscipit. Dolore.</div>
+                        <div class="mb-2 lh-sm nama-produk">{{$product->nama}}</div>
                         <div class="d-flex align-items-center justify-content-between">
                             <div class="text-success">
-                                <small class="font-extra-small">Rp</small><span>49.987</span>
+                                <small class="font-extra-small">Rp</small><span>{{formatIDR($product->harga)}}</span>
                             </div>
-                            <small class="font-extra-small">10 Terjual</small>
+                            <!-- <small class="font-extra-small">10 Terjual</small> -->
                         </div>
                     </div>
                 </div>
             </a>
-            <a href="" class="konten-card">
-                <div class="card">
-                    <img src="{{asset('/images/store/kalung.jpeg')}}" alt="">
-                    <div class="p-2 text">
-                        <div class="mb-2 lh-sm nama-produk">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo neque dolorem repudiandae iste! Dolorum molestiae tempora in numquam suscipit. Dolore.</div>
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div class="text-success">
-                                <small class="font-extra-small">Rp</small><span>49.987</span>
-                            </div>
-                            <small class="font-extra-small">10 Terjual</small>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="" class="konten-card">
-                <div class="card">
-                    <img src="{{asset('/images/store/sajadah.jpg')}}" alt="">
-                    <div class="p-2 text">
-                        <div class="mb-2 lh-sm nama-produk">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo neque dolorem repudiandae iste! Dolorum molestiae tempora in numquam suscipit. Dolore.</div>
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div class="text-success">
-                                <small class="font-extra-small">Rp</small><span>49.987</span>
-                            </div>
-                            <small class="font-extra-small">10 Terjual</small>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="" class="konten-card">
-                <div class="card">
-                    <img src="{{asset('/images/store/tasbih.jfif')}}" alt="">
-                    <div class="p-2 text">
-                        <div class="mb-2 lh-sm nama-produk">Syurban</div>
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div class="text-success">
-                                <small class="font-extra-small">Rp</small><span>49.987</span>
-                            </div>
-                            <small class="font-extra-small">10 Terjual</small>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="" class="konten-card">
-                <div class="card">
-                    <img src="{{asset('/images/store/syurban.jfif')}}" alt="">
-                    <div class="p-2 text">
-                        <div class="mb-2 lh-sm nama-produk">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo neque dolorem repudiandae iste! Dolorum molestiae tempora in numquam suscipit. Dolore.</div>
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div class="text-success">
-                                <small class="font-extra-small">Rp</small><span>49.987</span>
-                            </div>
-                            <small class="font-extra-small">10 Terjual</small>
-                        </div>
-                    </div>
-                </div>
-            </a>
+
+            @endforeach
 
         </div>
     </div>
 </div>
 
+
+<div class="modal fade" id="modalPencarian" aria-labelledby="modalPencarianLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content bg-light">
+            <div class="container px-2">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-md-10">
+                        <div class="modal-header border-0">
+                            <div class="field-search w-100">
+                                <i class="bi bi-search"></i>
+                                <input type="text" class="form-control ps-5" id="inputFieldSearch" placeholder="Cari Sesuatu ...">
+                            </div>
+                        </div>
+                        <div class="modal-body border-0">
+                            ...
+                        </div>
+                        <div class="modal-footer border-0">
+                            <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Tutup Pencarian</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('script')
@@ -157,6 +143,7 @@
         clamp: 2
     }))
 </script>
+
 @endsection
 
 
@@ -277,7 +264,7 @@
     a.konten-card img {
         width: 100%;
         max-height: 50vmin;
-        object-fit: cover;
+        object-fit: contain;
     }
 </style>
 @endsection

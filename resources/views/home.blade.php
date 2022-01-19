@@ -14,33 +14,7 @@
             <div class="fs-3 fw-bold font-logo">HIMMAH</div>
         </div>
         <span class="text-muted">v 1.0.0</span>
-        @if(!auth()->check())
-        <div class="d-flex align-items-center">
-            <a href="{{route('register')}}" class="text-decoration-none text-success me-3 show-loading-logo-on-click">Daftar</a>
-            <a href="{{route('login')}}" class="text-decoration-none btn btn-success btn show-loading-logo-on-click">Login</a>
-        </div>
-        <!-- <div class="dropdown">
 
-            <i id="user-data" data-bs-toggle="dropdown" aria-expanded="false" class="bi cursor-pointer bi-person-circle fs-1  text-success"></i>
-            <ul class="dropdown-menu" aria-labelledby="user-data">
-                <li> <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </li>
-
-            </ul>
-        </div> -->
-        <!-- else -->
-        <!-- <div class="d-flex align-items-center">
-            <a href="{{route('register')}}" class="text-decoration-none text-success me-3 show-loading-logo-on-click">Daftar</a>
-            <a href="{{route('login')}}" class="text-decoration-none btn btn-success btn show-loading-logo-on-click">Login</a>
-        </div> -->
-        @endif
     </div>
     <!-- end section header top -->
 
@@ -62,38 +36,26 @@
         <div class="item">
             <img src="{{asset('/images/slide-home/makkah.jpeg')}}" alt="slide-image">
             <div class="text">
-                <div class="fs-4 mb-2 fw-bold lh-sm ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, beatae.</div>
-                <div class="lh-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, autem!</div>
+                <div class="fs-4 mb-2 fw-bold lh-sm ">Haji dan Umroh</div>
+                <small class="lh-sm d-block">Mari segera Daftarkan diri anda untuk segera berhaji/umroh tahun depan</small>
             </div>
         </div>
         <div class="item">
             <img src="{{asset('/images/slide-home/makkah-2.jpg')}}" alt="slide-image">
-            <div class="text">
-                <div class="fs-4 mb-2 fw-bold lh-sm ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, beatae.</div>
-                <div class="lh-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, autem!</div>
-            </div>
+
         </div>
         <div class="item">
             <img src="{{asset('/images/slide-home/travel.jpg')}}" alt="slide-image">
-            <!-- <div class="text">
-                <div class="fs-1">Lorem ipsum dolor sit amet.</div>
-                <div class="fs-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, veritatis!</div>
-            </div> -->
+
         </div>
-        <div class="item">
-            <img src="{{asset('/images/slide-home/accessories.jfif')}}" alt="slide-image">
-            <!-- <div class="text">
-                <div class="fs-1">Lorem ipsum dolor sit amet.</div>
-                <div class="fs-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, veritatis!</div>
-            </div> -->
-        </div>
+
     </div>
     <!-- end section slide -->
 
     <!-- section menu home -->
     <div class="menu-home mt-4">
 
-        <div class="row g-4 justify-content-center align-items-center">
+        <div class="row g-4 justify-content-center" style="align-items: stretch;">
             <div class="col-4">
                 <div class="item show-loading-logo-on-click">
                     <!-- don't worry.  this anchor have been set to display block -->
@@ -101,7 +63,7 @@
 
                         <i class="menu-image bi bi-bank2"></i>
 
-                        <div class="fs-6 lh-sm ">Profil Perusahaan</div>
+                        <div class="text-menu lh-sm ">Profil Perusahaan</div>
                     </a>
                 </div>
 
@@ -113,7 +75,7 @@
 
                         <i class="menu-image bi bi-card-list"></i>
 
-                        <div class="fs-6 lh-sm ">Paket Umroh</div>
+                        <div class="text-menu lh-sm ">Paket Umroh</div>
                     </a>
                 </div>
 
@@ -123,7 +85,7 @@
                     <!-- don't worry.  this anchor have been set to display block -->
                     <a href="">
                         <img src="{{asset('/images/LOGO-HIMMAH-GROUP.png')}}" class="menu-image" alt="menu-image">
-                        <div class="fs-6 lh-sm ">Himmah Group</div>
+                        <div class="text-menu lh-sm ">Himmah Group</div>
                     </a>
                 </div>
 
@@ -133,7 +95,7 @@
                     <!-- don't worry.  this anchor have been set to display block -->
                     <a href="{{route('store.index')}}">
                         <img src="{{asset('/images/LOGO-HIMMAH-STORE.png')}}" class="menu-image" alt="menu-image">
-                        <div class="fs-6 lh-sm ">Himmah Store</div>
+                        <div class="text-menu lh-sm ">Himmah Store</div>
                     </a>
                 </div>
 
@@ -145,7 +107,7 @@
 
                         <i class="menu-image bi bi-house-door"></i>
 
-                        <div class="fs-6 lh-sm ">Pondok Megono</div>
+                        <div class="text-menu lh-sm ">Pondok Megono</div>
                     </a>
                 </div>
 
@@ -157,7 +119,7 @@
 
                         <i class="menu-image bi bi-compass"></i>
 
-                        <div class="fs-6 lh-sm ">Kompas</div>
+                        <div class="text-menu lh-sm ">Kompas</div>
                     </a>
                 </div>
 
@@ -194,7 +156,7 @@
         inset: 0;
         position: absolute;
         content: "";
-        background-image: linear-gradient(45deg, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0.3), transparent);
+        background-image: linear-gradient(to top, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0.3), transparent);
     }
 
     .slide-home .item img {
@@ -233,9 +195,19 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        height: 100%;
         text-decoration: none;
+        justify-content: space-between;
         color: black;
         text-align: center;
+    }
+
+    .menu-home .item a .text-menu {
+        font-size: calc(10% + 11px);
+    }
+
+    .menu-home .item {
+        height: 100%;
     }
 
     /* .menu-home .item .parent-icon {
@@ -252,15 +224,19 @@
 
 
     .menu-home .item .menu-image {
-        width: calc(10% + 80px);
-        height: calc(10% + 80px);
-        font-size: calc(10% + 70px);
+        width: calc(10% + 50px);
+        height: calc(10% + 50px);
+        font-size: calc(10% + 50px);
         margin-bottom: 1rem;
         color: #198754 !important;
         ;
         /* border-radius: 50%; */
-        object-fit: cover;
+        object-fit: contain;
 
+    }
+
+    .menu-home .item img.menu-image {
+        margin-top: .5rem;
     }
 </style>
 @endsection

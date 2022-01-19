@@ -40,10 +40,11 @@
             <tr>
                 <th scope="row">{{$loop->iteration}}</th>
                 <td>
-                    @if($category->gambar)
-                    <img src="{{avatar($category->gambar,'/images/store/kategori/')}}" style="width: 50px;height:50px;border-radius:10px;" alt="">
+                    @if($category->gambar == 'default.png')
+                    <img src="{{avatar('store-bw.png','/images/')}}" style="width: 50px;height:50px;border-radius:10px;" alt="">
                     @else
-                    -
+                    <img src="{{avatar($category->gambar,'/images/store/kategori/')}}" style="width: 50px;height:50px;border-radius:10px;" alt="">
+
                     @endif
                 </td>
                 <td>{{$category->nama}}</td>

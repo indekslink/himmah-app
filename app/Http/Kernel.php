@@ -4,6 +4,8 @@ namespace App\Http;
 
 use App\Http\Middleware\CekRole;
 use App\Http\Middleware\isAuthUser;
+use App\Http\Middleware\MustHaveStore;
+use App\Http\Middleware\OnlyHaventStore;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -66,6 +68,8 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'isRole' => CekRole::class,
-        'isAuthUser' => isAuthUser::class
+        'isAuthUser' => isAuthUser::class,
+        'MustHaveStore' => MustHaveStore::class,
+        'OnlyHaventStore' => OnlyHaventStore::class
     ];
 }

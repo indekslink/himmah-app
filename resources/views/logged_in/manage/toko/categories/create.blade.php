@@ -22,7 +22,7 @@
 
         <div class="row mb-4 align-items-center">
             <div class="col-4">
-                <img src="{{avatar('preloader.gif','/images/')}}" alt="Gambar Kategori" class="preview img-fluid img-thumbnail">
+                <img src="{{avatar('store-bw.png','/images/')}}" alt="Gambar Kategori" class="preview img-fluid img-thumbnail">
                 <small class="text-info img-default">*Gambar default</small>
             </div>
             <div class="col-8">

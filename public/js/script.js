@@ -57,3 +57,63 @@ function toggleLoadingLogo(event, msg = null) {
 function toggleLoadingAction() {
     loadingAction.classList.toggle("show");
 }
+
+window.onscroll = () => {
+    const headerDetailProduk = document.querySelector(".header-product");
+    const fieldSearchDetailProduk = document.querySelector(
+        ".header-product .field-search:not(.without-hidden)"
+    );
+    const scroll = window.scrollY;
+    if (headerDetailProduk && fieldSearchDetailProduk) {
+        if (scroll > 10) {
+            $(headerDetailProduk)
+                .removeClass("bg-transparent")
+                .addClass("bg-white shadow-sm");
+
+            fieldSearchDetailProduk.classList.remove("hidden");
+        } else {
+            $(headerDetailProduk)
+                .removeClass("bg-white shadow-sm")
+                .addClass("bg-transparent");
+
+            fieldSearchDetailProduk.classList.add("hidden");
+        }
+    }
+};
+
+const haveMenuBottom = document.querySelector(
+    ".fixed-bottom.section-menu-bottom"
+);
+const haveMenuBottomAction = document.querySelector(
+    ".fixed-bottom.action-produk"
+);
+if (haveMenuBottom || haveMenuBottomAction) {
+    document.querySelector(".container.section-content").style.marginBottom =
+        "100px";
+}
+
+const previewImage = (event, targetPreview) => {
+    const preview = document.querySelector(targetPreview);
+    const [file] = event.target.files;
+    if (file) {
+        preview.src = URL.createObjectURL(file);
+    }
+};
+
+var myModalEl = document.getElementById("modalPencarian");
+if (myModalEl) {
+    var modal = bootstrap.Modal.getOrCreateInstance(myModalEl); // Returns a Bootstrap modal instance
+
+    $(".trigger-modal-search").on("click", function () {
+        const input = document.querySelector("#inputFieldSearch");
+        const trigger = $(this);
+
+        if (trigger.hasClass("with-placeholder")) {
+            input.setAttribute("placeholder", trigger.attr("placeholder"));
+        }
+        modal.show();
+        myModalEl.addEventListener("shown.bs.modal", function (event) {
+            input.focus();
+        });
+    });
+}

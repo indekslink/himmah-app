@@ -48,13 +48,13 @@
         }
 
         .fixed-bottom .user-avatar {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
         }
 
-        .section-content {
+        /* .section-content {
             margin-bottom: 100px;
-        }
+        } */
     </style>
     @yield('style')
 
@@ -76,6 +76,7 @@
         <div class="display-4 fw-bold lh-sm font-logo">HIMMAH</div>
         <div class="fs-4 text-muted lh-sm">PT. Hijrah Makkah Madinah</div>
     </div>
+    @yield('content_carousel_image')
     <div class="container section-content">
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10">
@@ -85,6 +86,8 @@
     </div>
 
     @yield('menubottom')
+
+    @yield('action_menu_show_produk')
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 

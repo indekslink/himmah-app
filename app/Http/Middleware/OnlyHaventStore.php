@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class CekRole
+class OnlyHaventStore
 {
     /**
      * Handle an incoming request.
@@ -14,13 +14,12 @@ class CekRole
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next, ...$roles)
+    public function handle(Request $request, Closure $next)
     {
-        if (in_array(auth()->user()->role->name, $roles)) {
-            // is Super admin 
-            // or admin
+        if (!auth()->user()->store) {
+
             return $next($request);
-        };
+        }
         return abort(404);
     }
 }

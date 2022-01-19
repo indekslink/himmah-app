@@ -16,6 +16,7 @@
     </div>
 </div>
 
+
 <div class="card menu mb-5" style="margin-top: 5rem;">
     <div class="card-header fs-5 sticky-top bg-light">Harus Diisi</div>
     <div class="card-body bg-light p-0">
@@ -59,7 +60,7 @@
                     <div class="col-6">
                         <div class=" lh-sm ms-2">Alamat</div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-6 text-end">
                         @if($user->address)
                         <span class="info-update">
                             {{$user->address}}
@@ -95,7 +96,7 @@
 
                 @if($user->avatar)
                 <span class="info-update">
-                    <img class="img-fluid" style="width: 50px;height:50px;" src="{{avatar($user->avatar)}}" alt="">
+                    <img class="img-fluid fit-cover" style="width: 50px;height:50px;" src="{{avatar($user->avatar,'/images/user/')}}" alt="">
                 </span>
                 @else
                 <i class="bi bi-chevron-right fs-5"></i>

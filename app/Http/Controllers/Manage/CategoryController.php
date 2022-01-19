@@ -8,6 +8,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 
 class CategoryController extends Controller
 {
@@ -18,7 +19,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::withCount('products')->latest()->get();
+        $categories = Category::withCount('products')->whereHas('stores', function ($query) {
+            $query->whereHas('user', function ($query) {
+                $query->where('id', auth()->user()->id);
+            });
+        })->latest()->get();
 
         return view('logged_in.manage.toko.categories.index', compact('categories'));
     }
@@ -46,7 +51,7 @@ class CategoryController extends Controller
                 $slug = Str::slug($value);
                 $exist = Category::where('slug', $slug)->first();
                 if ($exist) {
-                    $fail($attribute . ' tersebut sudah ada di dalam toko anda !');
+                    $fail($attribute . ' tersebut sudah ada!');
                 }
             }],
             'gambar' => 'nullable|mimes:png,jpg,jpeg|max:2000',
@@ -72,7 +77,7 @@ class CategoryController extends Controller
         }
 
         $category->save();
-        $category->stores()->attach(1);
+        $category->stores()->attach(auth()->user()->store->id);
 
         return redirect()->route('categories.index', emailLogin())->with('success', 'Kategori berhasil ditambahkan');
     }
@@ -165,7 +170,7 @@ class CategoryController extends Controller
 
         unlink('images/store/kategori/' . $category->gambar);
         $category->delete();
-        $category->stores()->detach(1); // id toko user
+        $category->stores()->detach(auth()->user()->store->id); // id toko user
         return redirect()->route('categories.index', emailLogin())->with('success', $category->nama . ' berhasil dihapus');
     }
 }

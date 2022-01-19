@@ -19,7 +19,9 @@ body {
     margin-left: -50vw;
     margin-right: -50vw;
 }
-
+.fit-cover {
+    object-fit: cover;
+}
 .form-control:focus,
 .form-select:focus {
     border-color: #07971a !important;

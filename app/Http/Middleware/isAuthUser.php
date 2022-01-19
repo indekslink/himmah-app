@@ -21,6 +21,6 @@ class isAuthUser
         if ($emailOnUrl == $emailIsLoggedIn) {
             return $next($request);
         }
-        return redirect()->back();
+        return abort(404);
     }
 }

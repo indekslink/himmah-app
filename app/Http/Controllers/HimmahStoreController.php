@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Product;
+use App\Models\Store;
 
 class HimmahStoreController extends Controller
 {
@@ -15,7 +17,7 @@ class HimmahStoreController extends Controller
     public function index()
     {
         $data = Category::latest()->take(10)->get();
-
+        $products = Product::latest()->get();
         $categories = [];
         $categories['top'] = $data->filter(function ($item, $key) {
             if ($key % 2 == 0) return $item;
@@ -27,7 +29,8 @@ class HimmahStoreController extends Controller
         return view(
             'himmah_store.index',
             [
-                'categories' => collect($categories)
+                'categories' => collect($categories),
+                'products' => $products
             ]
         );
     }
@@ -59,9 +62,17 @@ class HimmahStoreController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $slug)
     {
-        //
+
+
+        $store = Store::with(['products' => function ($query) use ($request) {
+            $query->when($request->has("filter"), function ($query) use ($request) {
+                $query->orderBy('created_at', $request->filter);
+            })->latest();
+        }])->where('slug', $slug)->firstOrFail();
+
+        return view('himmah_store.store', compact('store'));
     }
 
     /**
@@ -96,5 +107,23 @@ class HimmahStoreController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function detail_produk(Store $store, Product $product)
+    {
+        // dd($product->store->slug);
+        $produk_lainnya = $product->store->products()->where('id', '!=', $product->id)->latest()->take(10)->get();
+        $product_same_category = Product::with('categories')
+            ->whereHas('categories', function ($query) use ($product) {
+                $query->whereIn('slug', $product->categories()->get()->pluck('slug'));
+            })
+            ->whereHas('store', function ($query) use ($product) {
+                $query->where('slug', '!=', $product->store->slug);
+            })
+            ->latest()
+            ->get();
+
+
+        return view('himmah_store.show', compact('product', 'produk_lainnya', 'product_same_category'));
     }
 }

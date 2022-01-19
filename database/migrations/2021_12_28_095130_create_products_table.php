@@ -17,9 +17,11 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->foreignId('store_id');
             $table->string('nama');
+            $table->string('slug');
             $table->bigInteger('stok');
             $table->bigInteger('harga');
             $table->string('gambar');
+            $table->string('gambar_utama');
             $table->longText('deskripsi');
             $table->timestamps();
         });

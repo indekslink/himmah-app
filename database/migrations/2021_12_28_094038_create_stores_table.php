@@ -18,7 +18,11 @@ class CreateStoresTable extends Migration
             $table->foreignId('user_id');
             $table->string('nama');
             $table->string('slug');
+            $table->string('no_telepon')->nullable();
+            $table->string('provinsi')->nullable();
+            $table->string('kota')->nullable();
             $table->longText('alamat');
+            $table->string('avatar');
             $table->timestamps();
         });
     }

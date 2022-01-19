@@ -72,8 +72,13 @@ Route::group(['prefix' => 'store/shop'], function () {
         Route::get('/{slug_product}', [ShopUserController::class, 'show_product'])->name('shop.user.products.show');
     });
 });
+
 // controller Himmah Store
 Route::resource('store', HimmahStore::class);
+
+Route::prefix('store/{store:slug}')->group(function () {
+    Route::get('/{product:slug}', [HimmahStore::class, 'detail_produk'])->name('detail_produk');
+});
 // end controller Himmah Store
 
 
@@ -86,8 +91,17 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::get('/settings/{field}', [UserController::class, 'field_pengaturan_akun'])->name('user.setting.field');
         Route::post('/settings/{field}', [UserController::class, 'store_field_pengaturan_akun'])->name('user.setting.field.store');
 
-        Route::prefix('store')->group(function () {
+
+        Route::middleware('OnlyHaventStore')->group(function () {
+            Route::get('/make-store', [ShopUserController::class, 'make_shop'])->name('buat_toko');
+            Route::get('/make-store/form', [ShopUserController::class, 'show_form'])->name('form_buat_toko');
+            Route::post('/make-store/form', [ShopUserController::class, 'store_form'])->name('store_shop');
+        });
+
+        Route::prefix('store')->middleware('MustHaveStore')->group(function () {
             Route::get('/', [ShopUserController::class, 'my_shop'])->name("manage.shop.user");
+            Route::get('/edit', [ShopUserController::class, 'edit_shop'])->name('manage.shop.user.edit');
+            Route::put('/edit', [ShopUserController::class, 'update_shop'])->name('manage.shop.user.update');
 
             Route::resources([
                 'products' => ProductController::class,

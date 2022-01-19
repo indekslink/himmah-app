@@ -46,11 +46,11 @@ class LoginController extends Controller
             'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string'],
         ]);
-        if (User::whereEmail($request->email)->first()->is_logged_in == 1) {
-            return back()->withErrors([
-                'credentials' => 'Akun tersebut sedang digunakan oleh user selain Anda'
-            ]);
-        }
+        // if (User::whereEmail($request->email)->first()->is_logged_in == 1) {
+        //     return back()->withErrors([
+        //         'credentials' => 'Akun tersebut sedang digunakan oleh user selain Anda'
+        //     ]);
+        // }
         if (Auth::attempt($credentials, true)) {
             $request->user()->isLoggedIn(true);
             $request->session()->regenerate();
