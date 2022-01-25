@@ -49,7 +49,7 @@
 
             <div class="kategori">
                 @foreach($categories['top'] as $c)
-                <div class="item mb-4  ">
+                <div class="item mb-4 " onclick="filterAction(`{{route('getAllProductOfCategories',[$c->slug])}}`)">
                     <div class="parent-img bg-light">
                         <img src="{{avatar($c->gambar,'/images/store/kategori/')}}" alt="">
                     </div>
@@ -59,7 +59,7 @@
             </div>
             <div class="kategori">
                 @foreach($categories['bottom'] as $c)
-                <div class="item  ">
+                <div class="item " onclick="filterAction(`{{route('getAllProductOfCategories',[$c->slug])}}`)">
                     <div class="parent-img bg-light">
                         <img src="{{avatar($c->gambar,'/images/store/kategori/')}}" alt="">
                     </div>
@@ -252,6 +252,7 @@
         display: inline-block;
         text-decoration: none;
         color: black;
+        width: 100%;
     }
 
     a.konten-card .text {

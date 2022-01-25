@@ -112,15 +112,28 @@
     <div class="my-1">
         <div class="row g-1 align-items-center ">
 
-            <div class="col-8 d-flex align-items-center">
-                <img src="{{avatar($product->store->avatar,'/images/store/logo/')}}" alt="" class="rounded-circle me-2 gambar-toko ">
-                <div class="info d-flex flex-column">
-                    <small class="fw-bold">{{$product->store->nama}}</small>
-                    <small class="d-flex align-items-center"><i class="bi bi-geo-alt me-1"></i>{{$product->store->kota}}, {{$product->store->provinsi}}</small>
+            <div class="col-8 ">
+
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-sm-2  col-3 text-center">
+                        <img src="{{avatar($product->store->avatar,'/images/store/logo/')}}" alt="" class="rounded-circle me-2 gambar-toko ">
+                    </div>
+                    <div class="col-sm-10 col-9  ">
+                        <small class="fw-bold d-block text-truncate">{{$product->store->nama}}</small>
+                        <small class="d-block text-truncate"><i class="bi bi-geo-alt me-1"></i>{{$product->store->kota}}, {{$product->store->provinsi}}</small>
+                    </div>
                 </div>
+                <!-- Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi numquam ducimus doloribus aliquid. Nemo, eveniet explicabo laborum natus quibusdam, quae, voluptate sit rem esse quisquam omnis aliquam dolore recusandae. Quae, fugit aliquid eius labore facilis optio at, eum consequuntur libero illum omnis eveniet fuga quisquam praesentium a ipsum. Dolore delectus optio magnam obcaecati, commodi debitis, corrupti tenetur quisquam accusantium aut accusamus neque voluptatem quidem aspernatur necessitatibus fugiat id, rerum provident quia atque assumenda odio! Excepturi, reprehenderit corporis dolores et tempore possimus accusantium, rerum magni minima odit quaerat ipsum saepe eos nisi ad vel nesciunt debitis consectetur facere molestias placeat ducimus. -->
+
+                <!-- 
+                   
+                    <div class="info d-flex flex-column">
+                     
+                    </div> -->
+
             </div>
-            <div class="col-4 text-center">
-                <a href="{{route('store.show',$product->store->slug)}}" class="btn btn-sm btn-outline-success"><small>Kunjungi Toko</small></a>
+            <div class="col-4  text-center">
+                <a href="{{route('store.show',$product->store->slug)}}" class="btn  btn-sm btn-outline-success"><small>Kunjungi Toko</small></a>
             </div>
 
         </div>
@@ -165,7 +178,7 @@
     </div>
     <div class="space-y bg-light my-2"></div>
     <div class="my-1">
-        <small class="fw-bold my-2 d-block text-center ">&mdash; Kamu Mungkin Juga Suka &mdash;</small>
+        <small class="fw-bold my-4 d-block text-center ">&mdash; Kamu Mungkin Juga Suka &mdash;</small>
         <div class="{{$product_same_category->count() > 0 ? 'konten-kolom' : ''}}">
             @forelse($product_same_category as $psc)
             <a href="{{route('detail_produk',[$psc->store->slug,$psc->slug])}}" class="konten-card">
@@ -237,6 +250,7 @@
         display: inline-block;
         text-decoration: none;
         color: black;
+        width: 100%;
     }
 
     a.konten-card .text {

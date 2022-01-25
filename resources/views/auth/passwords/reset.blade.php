@@ -3,7 +3,7 @@
 
 @section('content')
 
-<img src="{{asset('/images/LOGO-HIMMAH.png')}}" alt="logo himmah" class="card-img-top mx-auto logo">
+<img src="{{asset('/images/LOGO-HIMMAH-GROUP.png')}}" alt="logo himmah" class="card-img-top mx-auto logo">
 <div class="text-center my-2">
 
     <div class="fs-1 fw-bold">Masukkan Password Baru Anda</div>

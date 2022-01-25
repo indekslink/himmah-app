@@ -1,9 +1,9 @@
 @extends('layouts.myauth')
 @section('title','Login')
-
+@include('partials.header.himmahGroup')
 @section('content')
 
-<img src="{{asset('/images/LOGO-HIMMAH.png')}}" alt="logo himmah" class="card-img-top mx-auto logo">
+<img src="{{asset('/images/LOGO-HIMMAH-GROUP.png')}}" alt="logo himmah" class="card-img-top mx-auto logo">
 <div class="text-center my-2">
 
     <div class="fs-1 fw-bold">Login</div>
@@ -48,20 +48,20 @@
             </div> -->
 
             @if (Route::has('password.request'))
-            <a class="btn-link text-success text-decoration-none show-loading-logo-on-click" href="{{ route('password.request') }}">
+            <a class="btn-link text-muted text-decoration-none show-loading-logo-on-click" href="{{ route('password.request') }}">
                 Lupa Password?
             </a>
             @endif
         </div>
-        <button type="submit" class="btn w-100 btn-success mb-3 btn-lg">Login</button>
+        <button type="submit" class="btn w-100 my-primary-bg-color mb-3 btn-lg">Login</button>
         <div class="text-center mb-2">
 
-            Belum punya akun? <a class="btn-link text-decoration-none text-success show-loading-logo-on-click" href="{{ route('register') }}">Daftar disini </a>
+            <span class="text-muted">Belum punya akun?</span> <a class="btn-link text-decoration-none my-primary-color  show-loading-logo-on-click" href="{{ route('register') }}">Daftar disini </a>
 
         </div>
         <div class="text-center">
 
-            <a style="line-height:0;" class="btn-link text-decoration-none d-flex align-items-center justify-content-center text-success show-loading-logo-on-click" href="/"> <i class="bi bi-arrow-left-short fs-3"></i> Kembali ke Halaman Beranda </a>
+            <a style="line-height:0;" class="btn-link text-decoration-none d-flex align-items-center justify-content-center text-muted show-loading-logo-on-click" href="/"> <i class="bi bi-arrow-left-short fs-3"></i> Kembali ke Halaman Beranda </a>
 
         </div>
     </form>

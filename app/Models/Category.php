@@ -23,6 +23,6 @@ class Category extends Model
 
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'category_product')->withTimestamps();
+        return $this->belongsToMany(Product::class, 'category_product')->withTimestamps()->orderByDesc('products.created_at');
     }
 }

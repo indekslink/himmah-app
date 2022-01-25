@@ -1,4 +1,4 @@
-let iconBackPage = document.querySelector("i.icon-back");
+let iconBackPage = document.querySelector(".icon-back");
 if (iconBackPage) {
     iconBackPage.addEventListener("click", function () {
         if (iconBackPage.hasAttribute("data-current-page")) {
@@ -92,11 +92,21 @@ if (haveMenuBottom || haveMenuBottomAction) {
         "100px";
 }
 
-const previewImage = (event, targetPreview) => {
+const previewImage = (
+    event,
+    targetPreview,
+    targetTakeName,
+    valueOrTextContentOrInnerHTML
+) => {
     const preview = document.querySelector(targetPreview);
     const [file] = event.target.files;
     if (file) {
         preview.src = URL.createObjectURL(file);
+        if (targetTakeName) {
+            document.querySelector(targetTakeName)[
+                valueOrTextContentOrInnerHTML
+            ] = file.name;
+        }
     }
 };
 
@@ -116,4 +126,8 @@ if (myModalEl) {
             input.focus();
         });
     });
+}
+function filterAction(href) {
+    toggleLoadingLogo();
+    window.location.href = href;
 }

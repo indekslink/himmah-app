@@ -20,3 +20,9 @@ function idTokoUser()
 {
     return auth()->user()->store->id;
 }
+
+
+function reverse_array($arr)
+{
+    return array_reverse($arr, true);
+}

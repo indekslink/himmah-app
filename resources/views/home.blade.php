@@ -8,14 +8,7 @@
 @section('content')
 <div>
     <!-- section header top -->
-    <div class="d-flex align-items-center py-2 nav-header sticky-top justify-content-between">
-        <div class="d-flex align-items-center logo-place">
-            <img class="" src="{{asset('/images/LOGO-HIMMAH.png')}}" alt="logo himmah">
-            <div class="fs-3 fw-bold font-logo">HIMMAH</div>
-        </div>
-        <span class="text-muted">v 1.0.0</span>
-
-    </div>
+    @include('partials.header.himmahGroup')
     <!-- end section header top -->
 
 
@@ -34,18 +27,30 @@
 
     <div class="owl-carousel mt-4 owl-theme slide-home">
         <div class="item">
-            <img src="{{asset('/images/slide-home/makkah.jpeg')}}" alt="slide-image">
-            <div class="text">
+            <img src="/new/badal haji.jpg" loading="lazy" alt="slide-image">
+            <!-- <div class="text">
                 <div class="fs-4 mb-2 fw-bold lh-sm ">Haji dan Umroh</div>
                 <small class="lh-sm d-block">Mari segera Daftarkan diri anda untuk segera berhaji/umroh tahun depan</small>
-            </div>
+            </div> -->
         </div>
         <div class="item">
-            <img src="{{asset('/images/slide-home/makkah-2.jpg')}}" alt="slide-image">
+            <img src="/new/badal UMRAH.jpg" loading="lazy" alt="slide-image">
 
         </div>
         <div class="item">
-            <img src="{{asset('/images/slide-home/travel.jpg')}}" alt="slide-image">
+            <img src="/new/brosur paket umroh MARET.jpg" loading="lazy" alt="slide-image">
+
+        </div>
+        <div class="item">
+            <img src="/new/paket umroh 18 maret.jpg" loading="lazy" alt="slide-image">
+
+        </div>
+        <div class="item">
+            <img src="/new/stand banner himmah card.jpg" loading="lazy" alt="slide-image">
+
+        </div>
+        <div class="item">
+            <img src="/new/stand banner MANASIK.jpg" loading="lazy" alt="slide-image">
 
         </div>
 
@@ -55,42 +60,66 @@
     <!-- section menu home -->
     <div class="menu-home mt-4">
 
-        <div class="row g-4 justify-content-center" style="align-items: stretch;">
-            <div class="col-4">
+        <div class="row g-4 " style="align-items: stretch;">
+            <div class="col-3">
                 <div class="item show-loading-logo-on-click">
                     <!-- don't worry.  this anchor have been set to display block -->
                     <a href="{{route('company_profile')}}">
 
-                        <i class="menu-image bi bi-bank2"></i>
+                        <img src="{{asset('/new/A.png')}}" class="menu-image" alt="menu-image">
 
                         <div class="text-menu lh-sm ">Profil Perusahaan</div>
                     </a>
                 </div>
 
             </div>
-            <div class="col-4">
+            <div class="col-3">
+                <div class="item show-loading-logo-on-click">
+                    <!-- don't worry.  this anchor have been set to display block -->
+                    <a href="#">
+
+                        <img src="{{asset('/new/B.png')}}" class="menu-image" alt="menu-image">
+
+                        <div class="text-menu lh-sm ">Unit Bisnis</div>
+                    </a>
+                </div>
+
+            </div>
+            <div class="col-3">
                 <div class="item show-loading-logo-on-click">
                     <!-- don't worry.  this anchor have been set to display block -->
                     <a href="{{route('home.paket-umroh')}}">
 
-                        <i class="menu-image bi bi-card-list"></i>
+                        <img src="{{asset('/new/C.png')}}" class="menu-image" alt="menu-image">
 
-                        <div class="text-menu lh-sm ">Paket Umroh</div>
+                        <div class="text-menu lh-sm ">Paket Haji & Umroh</div>
                     </a>
                 </div>
 
             </div>
-            <div class="col-4">
+            <div class="col-3">
+                <div class="item show-loading-logo-on-click">
+                    <!-- don't worry.  this anchor have been set to display block -->
+                    <a href="#">
+
+                        <img src="{{asset('/new/D.png')}}" class="menu-image" alt="menu-image">
+
+                        <div class="text-menu lh-sm ">Galeri</div>
+                    </a>
+                </div>
+
+            </div>
+            <div class="col-3">
                 <div class="item show-loading-logo-on-click">
                     <!-- don't worry.  this anchor have been set to display block -->
                     <a href="">
-                        <img src="{{asset('/images/LOGO-HIMMAH-GROUP.png')}}" class="menu-image" alt="menu-image">
-                        <div class="text-menu lh-sm ">Himmah Group</div>
+                        <img src="{{asset('/images/LOGO-HIMMAH.png')}}" class="menu-image" alt="menu-image">
+                        <div class="text-menu lh-sm ">Himmah Tour and Travel</div>
                     </a>
                 </div>
 
             </div>
-            <div class="col-4">
+            <div class="col-3">
                 <div class="item show-loading-logo-on-click">
                     <!-- don't worry.  this anchor have been set to display block -->
                     <a href="{{route('store.index')}}">
@@ -100,19 +129,19 @@
                 </div>
 
             </div>
-            <div class="col-4">
+            <div class="col-3">
                 <div class="item show-loading-logo-on-click">
                     <!-- don't worry.  this anchor have been set to display block -->
                     <a href="">
 
-                        <i class="menu-image bi bi-house-door"></i>
+                        <i class="menu-image bi bi-house"></i>
 
                         <div class="text-menu lh-sm ">Pondok Megono</div>
                     </a>
                 </div>
 
             </div>
-            <div class="col-4">
+            <div class="col-3">
                 <div class="item show-loading-logo-on-click">
                     <!-- don't worry.  this anchor have been set to display block -->
                     <a href="{{route('compass')}}">
@@ -143,7 +172,7 @@
 
     .slide-home .item {
         position: relative;
-        height: 50vmin;
+        height: 70vmin;
         border-radius: 10px;
         overflow: hidden;
     }
@@ -174,6 +203,11 @@
         color: white;
     }
 
+    .slide-home .owl-item:not(.active) {
+        transition: .5s ease-in-out;
+        opacity: .6;
+    }
+
     .owl-theme .owl-dots .owl-dot span {
         margin: 0 2.5px !important;
         transition: .5s ease;
@@ -184,7 +218,7 @@
     }
 
     .owl-theme .owl-dots .owl-dot.active span {
-        background-color: #198754 !important;
+        background-color: #113905 !important;
     }
 
     .owl-theme .owl-dots .owl-dot.active span {
@@ -245,10 +279,11 @@
 <script src="{{asset('/vendor/owl-carousel/dist/owl.carousel.min.js')}}"></script>
 <script>
     let owl = $('.owl-carousel.slide-home');
-    const stagePadding = 20;
+    const stagePadding = 100;
     owl.owlCarousel({
         stagePadding,
-        margin: 12,
+        margin: 20,
+        loop: true,
         items: 1,
         smartSpeed: 500,
         responsive: {
@@ -257,30 +292,30 @@
             }
         }
     })
-    owl.on('changed.owl.carousel', function(event) {
-        const {
-            count,
-            index
-        } = event.item;
-        let padding = {};
-        if (index == 0) {
-            padding = {
-                'padding-left': '0',
-                'padding-right': stagePadding + 'px'
-            }
-        } else if (index === count - 1) {
-            padding = {
-                'padding-left': stagePadding * 2 + 'px',
-                'padding-right': '0'
-            }
-        } else {
-            padding = {
-                'padding-left': stagePadding + 'px',
-                'padding-right': stagePadding + 'px',
-            }
-        }
-        $('.owl-stage').css(padding)
-    })
-    $('.owl-stage').css('padding-left', '0')
+    // owl.on('changed.owl.carousel', function(event) {
+    //     const {
+    //         count,
+    //         index
+    //     } = event.item;
+    //     let padding = {};
+    //     if (index == 0) {
+    //         padding = {
+    //             'padding-left': '0',
+    //             'padding-right': stagePadding + 'px'
+    //         }
+    //     } else if (index === count - 1) {
+    //         padding = {
+    //             'padding-left': stagePadding * 2 + 'px',
+    //             'padding-right': '0'
+    //         }
+    //     } else {
+    //         padding = {
+    //             'padding-left': stagePadding + 'px',
+    //             'padding-right': stagePadding + 'px',
+    //         }
+    //     }
+    //     $('.owl-stage').css(padding)
+    // })
+    // $('.owl-stage').css('padding-left', '0')
 </script>
 @endsection

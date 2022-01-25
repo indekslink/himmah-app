@@ -15,7 +15,7 @@
 <div class="card menu my-2">
     <div class="card-header fs-5 sticky-top ps-0 fw-bold bg-white">Profil</div>
     <div class="card-body  p-0">
-        <div class="py-2 item bg-white">
+        <div class="py-2 item bg-white border-bottom">
 
             <div class="row align-items-center">
                 <div class="col-4">
@@ -36,7 +36,7 @@
                 </div>
             </div>
         </div>
-        <a href="{{route('user.setting',$user->email)}}" class="item py-2 bg-white d-flex align-items-center justify-content-between">
+        <a href="{{route('user.setting',$user->email)}}" class="item py-2 bg-white  d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
 
                 <i class="bi bi-gear  gambar"></i>
@@ -44,16 +44,7 @@
             </div>
             <i class="bi bi-chevron-right fs-4"></i>
         </a>
-        <a href="{{route('konten')}}" class="item py-2 bg-white">
-            <div class="top d-flex  align-items-center justify-content-between">
-                <div class="d-flex align-items-center">
 
-                    <i class="bi bi-sliders gambar"></i>
-                    <div class=" lh-sm ms-4">Lainnya</div>
-                </div>
-                <i class="bi bi-chevron-right fs-4"></i>
-            </div>
-        </a>
     </div>
 </div>
 <!-- end Kontent Home -->
@@ -88,7 +79,7 @@
         <!-- <small class="text-success d-block lh-sm">*Section dibawah ini berfungsi untuk mengelola konten yang terdapat pada menu beranda</small> -->
     </div>
     <div class="card-body bg-light p-0">
-        <a href="{{route('manage.company.profile')}}" class="item p-2 bg-white">
+        <a href="{{route('manage.company.profile')}}" class="item p-2 bg-white border-bottom">
             <div class="top d-flex  align-items-center justify-content-between">
                 <div class="d-flex align-items-center">
 
@@ -98,7 +89,7 @@
                 <i class="bi bi-chevron-right fs-4"></i>
             </div>
         </a>
-        <a href="{{route('paket-umroh.index')}}" class="item p-2 bg-white">
+        <a href="{{route('paket-umroh.index')}}" class="item p-2 bg-white border-bottom">
             <div class="top d-flex  align-items-center justify-content-between">
                 <div class="d-flex align-items-center">
 
@@ -108,7 +99,7 @@
                 <i class="bi bi-chevron-right fs-4"></i>
             </div>
         </a>
-        <a href="#" class="item p-2 bg-white">
+        <a href="{{ route('allStore') }}" class="item p-2 bg-white border-bottom">
             <div class="top d-flex  align-items-center justify-content-between">
                 <div class="d-flex align-items-center">
 
@@ -118,17 +109,17 @@
                 <i class="bi bi-chevron-right fs-4"></i>
             </div>
         </a>
-        <a href="#" class="item p-2 bg-white">
+        <a href="#" class="item p-2 bg-white border-bottom">
             <div class="top d-flex  align-items-center justify-content-between">
                 <div class="d-flex align-items-center">
 
-                    <img class="gambar" src="{{asset('/images/LOGO-HIMMAH-GROUP.png')}}" alt="">
-                    <div class=" lh-sm ms-4">Himmah Group</div>
+                    <img class="gambar" src="{{asset('/images/LOGO-HIMMAH.png')}}" alt="">
+                    <div class=" lh-sm ms-4">Himmah Tour and Travel</div>
                 </div>
                 <i class="bi bi-chevron-right fs-4"></i>
             </div>
         </a>
-        <a href="#" class="item p-2 bg-white">
+        <a href="#" class="item p-2 bg-white border-bottom">
             <div class="top d-flex  align-items-center justify-content-between">
                 <div class="d-flex align-items-center">
 
@@ -138,16 +129,7 @@
                 <i class="bi bi-chevron-right fs-4"></i>
             </div>
         </a>
-        <a href="#" class="item p-2 bg-white">
-            <div class="top d-flex  align-items-center justify-content-between">
-                <div class="d-flex align-items-center">
 
-                    <i class="bi bi-compass gambar"></i>
-                    <div class=" lh-sm ms-4">Kompas</div>
-                </div>
-                <i class="bi bi-chevron-right fs-4"></i>
-            </div>
-        </a>
         <a href="{{route('konten')}}" class="item p-2 bg-white">
             <div class="top d-flex  align-items-center justify-content-between">
                 <div class="d-flex align-items-center">

@@ -58,6 +58,8 @@
     </style>
     @yield('style')
 
+    @yield('styleHeader')
+
     <title>@yield('title') - {{config('app.name')}}</title>
 </head>
 
@@ -71,12 +73,13 @@
             <div class="fs-1 lh-1">Loading</div>
         </div>
     </div>
-    <div class="parent-loading">
-        <img src="{{asset('/images/LOGO-HIMMAH.png')}}" alt="logo-himmah">
-        <div class="display-4 fw-bold lh-sm font-logo">HIMMAH</div>
+    <div class="parent-loading text-center">
+        <img src="{{asset('/images/LOGO-HIMMAH-GROUP.png')}}" alt="logo-himmah">
+        <div class="display-4 fw-bold lh-sm font-logo">HIMMAH GROUP</div>
         <div class="fs-4 text-muted lh-sm">PT. Hijrah Makkah Madinah</div>
     </div>
     @yield('content_carousel_image')
+    @yield('header')
     <div class="container section-content">
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10">

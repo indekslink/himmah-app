@@ -25,43 +25,46 @@
     </div>
     @endif
     <a href="{{route('products.create',emailLogin())}}" class="btn btn-success">Tambah Data</a>
-    <table class="table mt-4">
-        <thead>
-            <tr>
-                <th scope="col">No</th>
-                <th scope="col">Gambar</th>
-                <th scope="col">Nama</th>
-                <th scope="col">Stok</th>
-                <th scope="col">Harga</th>
-                <th scope="col">Detail</th>
-            </tr>
-        </thead>
-        <tbody>
-            @forelse($products as $product)
-            <tr>
-                <th scope="row">{{$loop->iteration}}</th>
-                <td>
-                    @if($product->gambar)
-                    <img class="fit-cover" src="{{avatar($product->gambar_utama,'/images/store/produk/')}}" style="width: 50px;height:50px;border-radius:10px;" alt="">
-                    @else
-                    -
-                    @endif
-                </td>
-                <td>{{$product->nama}}</td>
-                <td>{{$product->stok}} buah</td>
-                <td>Rp. {{formatIDR($product->harga)}}</td>
-                <td><a href="{{route('products.show',[emailLogin(),$product->slug])}}" class="btn btn-link  btn-sm"><i class="bi bi-eye fs-4"></i></a></td>
-            </tr>
-            @empty
-            <tr>
-                <td colspan="6" class="text-center">
-                    Data masih kosong !
-                </td>
-            </tr>
-            @endforelse
+    <div class="table-responsive  mt-4">
 
-        </tbody>
-    </table>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Gambar</th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">Stok</th>
+                    <th scope="col">Harga</th>
+                    <th scope="col">Detail</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse($products as $product)
+                <tr>
+                    <th scope="row">{{$loop->iteration}}</th>
+                    <td>
+                        @if($product->gambar)
+                        <img src="{{avatar($product->gambar_utama,'/images/store/produk/')}}" style="width: 50px;height:50px;border-radius:10px;object-fit: contain;" alt="">
+                        @else
+                        -
+                        @endif
+                    </td>
+                    <td>{{$product->nama}}</td>
+                    <td>{{$product->stok}} buah</td>
+                    <td>Rp. {{formatIDR($product->harga)}}</td>
+                    <td><a href="{{route('products.show',[emailLogin(),$product->slug])}}" class="btn btn-link  btn-sm"><i class="bi bi-eye fs-4"></i></a></td>
+                </tr>
+                @empty
+                <tr>
+                    <td colspan="6" class="text-center">
+                        Data masih kosong !
+                    </td>
+                </tr>
+                @endforelse
+
+            </tbody>
+        </table>
+    </div>
 </div>
 @endsection
 <!-- end Kontent Home -->
@@ -69,7 +72,7 @@
 <style>
     table td,
     table th {
-
+        white-space: nowrap;
         vertical-align: middle;
         text-align: center;
     }

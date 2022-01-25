@@ -1,9 +1,9 @@
 @extends('layouts.myauth')
 @section('title','Daftar')
-
+@include('partials.header.himmahGroup')
 @section('content')
 
-<img src="{{asset('/images/LOGO-HIMMAH.png')}}" alt="logo himmah" class="card-img-top mx-auto logo">
+<img src="{{asset('/images/LOGO-HIMMAH-GROUP.png')}}" alt="logo himmah" class="card-img-top mx-auto logo">
 <div class="text-center my-2">
 
     <div class="fs-1 fw-bold">Daftar</div>
@@ -53,12 +53,12 @@
 
         <div class="d-flex justify-content-between align-items-center mb-3">
 
-            <button type="submit" class="btn w-100 btn-success btn-lg">Daftar</button>
+            <button type="submit" class="btn w-100 my-primary-bg-color btn-lg">Daftar</button>
 
         </div>
         <div class="text-center">
 
-            Sudah punya akun? <a class="btn-link text-success text-decoration-none show-loading-logo-on-click" href="{{ route('login') }}">Login disini </a>
+            <span class="text-muted">Sudah punya akun?</span> <a class="btn-link my-primary-color text-decoration-none show-loading-logo-on-click" href="{{ route('login') }}">Login disini </a>
 
         </div>
     </form>

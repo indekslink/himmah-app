@@ -181,7 +181,7 @@
                 <div class="top d-flex  align-items-center justify-content-between">
 
                     <div class=" lh-sm ms-2">
-                        <span>Buat desain & isi Profil Perusahaan</span>
+                        <span>Upload dokumen Anda</span>
                         <sup>
 
                             @if($custom_design)

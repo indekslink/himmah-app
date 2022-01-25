@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="{{asset('/css/global.css')}}">
     <link rel="stylesheet" href="{{asset('/css/auth.css')}}">
     <title>@yield('title') - {{config('app.name')}}</title>
+
+    @yield('styleHeader')
 </head>
 
 <body>
@@ -31,17 +33,18 @@
             <div class="fs-1 lh-1">Loading</div>
         </div>
     </div>
-    <div class="parent-loading">
-        <img src="{{asset('/images/LOGO-HIMMAH.png')}}" alt="logo-himmah">
-        <div class="display-4 fw-bold lh-sm font-logo">HIMMAH</div>
+    <div class="parent-loading text-center">
+        <img src="{{asset('/images/LOGO-HIMMAH-GROUP.png')}}" alt="logo-himmah">
+        <div class="display-4 fw-bold lh-sm font-logo">HIMMAH GROUP</div>
         <div class="fs-4 text-muted lh-sm">PT. Hijrah Makkah Madinah</div>
     </div>
+    @yield('header')
     @yield('button-back')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-8">
 
-                <div class="card border-0 pt-4">
+                <div class="card border-0 bg-transparent pt-4">
                     @yield('content')
                 </div>
             </div>

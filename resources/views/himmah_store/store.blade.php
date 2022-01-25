@@ -6,31 +6,41 @@
 <div style="margin-top: 6rem;" class="container px-0 overflow-hidden">
     <div class="row justify-content-center">
         <div class="col-lg-8 col-md-10">
-
-            <div class="row align-items-center  px-2">
-                <div class="col-9">
+            @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{session('success')}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
+            <div class="row align-items-center gy-4 px-2">
+                <div class="col-sm-9 col-12">
                     <div class="d-flex align-items-center flex-wrap">
                         <img style="width: 60px;height:60px;object-fit:contain;" src="{{avatar($store->avatar,'/images/store/logo/')}}" alt="" class="rounded-circle  me-2 img-fluid">
                         <div>
 
-                            <div class="fw-bold mb-2"><a href="#" class="text-decoration-none text-dark  d-flex align-items-center">{{$store->nama}} <i class="bi bi-chevron-right ms-2"></i></a></div>
+                            <div data-bs-toggle="modal" data-bs-target="#modalDetailToko" class="fw-bold mb-2 cursor-pointer d-flex align-items-center">
+                                {{$store->nama}} <i class="bi bi-chevron-right ms-2"></i>
+                                @if($store->suspend)
+                                <sup class="badge bg-danger">Nonaktif</sup>
+                                @endif
+                            </div>
                             <small class="d-flex align-items-center"><i class="bi bi-geo-alt me-1"></i>{{$store->kota}}, {{$store->provinsi}}</small>
                         </div>
                     </div>
                 </div>
-                <div class="col-3 text-center d-flex flex-column align-items-end">
-                    <button onclick="chatWhatsapp('{{$store->no_telepon}}','Halo *Toko {{$store->nama}}*, Apakah Saya boleh berbicara dengan pemilik toko ini ?')" class="btn btn-sm btn-success mb-2 w-100"><i class="bi bi-telephone-fill me-1"></i> Hubungi</button>
+                <div class="col-sm-3 col-12 text-center d-flex flex-sm-column flex-row align-items-end">
+                    <button onclick="chatWhatsapp('{{$store->no_telepon}}','Halo *Toko {{$store->nama}}*, Apakah Saya boleh berbicara dengan pemilik toko ini ?')" class="btn btn-sm btn-success mb-sm-2 mb-0 w-100 me-2 me-sm-0"><i class="bi bi-telephone-fill me-1"></i> Hubungi</button>
                     <button onclick="chatWhatsapp('{{$store->no_telepon}}','Halo *Toko {{$store->nama}}*, Apakah Saya boleh mengajukan pertanyaan kepada pemilik toko ini ?')" class="btn btn-sm btn-outline-success w-100"><i class="bi bi-chat-dots me-1"></i> Chat</button>
                 </div>
             </div>
 
             <ul class="nav nav-pills my-3 justify-content-between nav-fill flex-nowrap" id="nav" role="tablist">
-                <li class="nav-item" role="presentation">
+                <li class="nav-item" onclick="filterAction(`{{route('store.show',[$store->slug])}}`)" role="presentation">
                     <button class="nav-link active" id="tab-produk-tab" data-bs-toggle="pill" data-bs-target="#tab-produk" type="button" role="tab" aria-controls="tab-produk" aria-selected="true">Produk</button>
                 </li>
 
 
-                <li class="nav-item" role="presentation">
+                <li class="nav-item" onclick="filterAction(`{{route('kategori_toko',[$store->slug])}}`)" role="presentation">
                     <button class="nav-link" id="tab-kategori-tab" data-bs-toggle="pill" data-bs-target="#tab-kategori" type="button" role="tab" aria-controls="tab-kategori" aria-selected="false">Kategori</button>
                 </li>
             </ul>
@@ -133,13 +143,120 @@
                                 <input type="text" class="form-control ps-5" id="inputFieldSearch" placeholder="Cari Sesuatu ...">
                             </div>
                         </div>
-                        <div class="modal-.nav-pills border-0">
+                        <div class="modal-body border-0">
                             ...
                         </div>
                         <div class="modal-footer border-0">
                             <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Tutup Pencarian</button>
 
                         </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalDetailToko" aria-labelledby="modalDetailTokoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content bg-light">
+            <div class="container px-2">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-md-10">
+                        <div class="modal-header border-0">
+                            <div class="fs-3 fw-bold">Detail Toko</div>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body border-0">
+                            <div class="d-flex align-items-center justify-content-around mb-3">
+                                <div class="text-center">
+                                    <div class="fw-bold fs-4">{{$store->products->count()}}</div>
+                                    <div>Produk</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="fw-bold fs-4">{{$store->categories->count()}}</div>
+                                    <div>Kategori</div>
+                                </div>
+                            </div>
+                            <div class="row align-items-center border-bottom py-3">
+                                <div class="col-6 fw-bold">
+                                    Nama Toko
+                                </div>
+                                <div class="col-6 text-end">
+                                    {{$store->nama}}
+                                </div>
+                            </div>
+                            <div class="row align-items-center border-bottom py-3">
+                                <div class="col-6 fw-bold">
+                                    No Telepon
+                                </div>
+                                <div class="col-6 text-end">
+                                    {{$store->no_telepon}}
+                                </div>
+
+                            </div>
+                            <div class="row align-items-center border-bottom py-3">
+                                <div class="col-6 fw-bold">
+                                    Alamat
+                                </div>
+                                <div class="col-6 text-end">
+                                    {{$store->alamat}}, {{$store->kota}}, {{$store->provinsi}}
+                                </div>
+
+                            </div>
+                            @if(in_array(auth()->user()->role->name,['admin','super_admin']) && $store->user->email != emailLogin())
+
+                            @if($store->suspend)
+                            <div class="row">
+                                <div class="col-6">
+                                    <form action="{{route('suspend.delete',[emailLogin(),$store->slug])}}" method="post" onsubmit="toggleLoadingAction()">
+                                        @csrf
+                                        @method("DELETE")
+                                        <button type="submit" class="btn btn-success mt-3 d-block w-100">Aktifkan Toko</button>
+                                    </form>
+                                </div>
+                                <div class="col-6">
+                                    <button type="submit" data-bs-toggle="modal" data-bs-target="#modalSuspend" class="btn btn-outline-warning mt-3 d-block w-100">Ubah keterangan</button>
+                                </div>
+                            </div>
+
+                            @else
+                            <button type="submit" data-bs-toggle="modal" data-bs-target="#modalSuspend" class="btn btn-danger mt-3 d-block w-100">Nonaktifkan Toko</button>
+                            @endif
+                            @endif
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalSuspend" aria-labelledby="modalSuspendLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content bg-light">
+            <div class="container px-2">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-md-10">
+                        <div class="modal-header border-0">
+                            <div class="fs-3"> Apakah Anda yakin ingin menonaktifkan <b>Toko {{$store->nama}}</b></div>
+                        </div>
+                        <div class="modal-body border-0">
+                            <form class="mt-3" action="{{ route('suspend.store',[emailLogin(),$store->slug]) }}" method="post" onsubmit="toggleLoadingAction()">
+                                @csrf
+                                <div class="form-floating mb-2">
+                                    <textarea class="form-control" style="height:350px" name="keterangan" required placeholder="Leave a comment here" id="floatingTextarea">@if($store->suspend){{$store->suspend->keterangan}}@endif</textarea>
+                                    <label for="floatingTextarea">Keterangan</label>
+                                </div>
+                                <div class="mt-5 d-flex justify-content-end">
+                                    <button type="button" class="btn btn-warning me-2" data-bs-toggle="modal" data-bs-target="#modalDetailToko">Batal</button>
+                                    <button type="submit" class="btn btn-outline-danger">Yakin</button>
+                                </div>
+                            </form>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -163,6 +280,7 @@
         display: inline-block;
         text-decoration: none;
         color: black;
+        width: 100%;
     }
 
     a.konten-card .text {
@@ -362,6 +480,7 @@
     }
 
     function filterAction(href) {
+        toggleLoadingLogo();
         window.location.href = href;
     }
 </script>

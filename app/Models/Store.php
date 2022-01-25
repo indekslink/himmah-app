@@ -36,4 +36,10 @@ class Store extends Model
     {
         return 'slug';
     }
+
+
+    public function suspend()
+    {
+        return $this->hasOne(Suspend::class);
+    }
 }

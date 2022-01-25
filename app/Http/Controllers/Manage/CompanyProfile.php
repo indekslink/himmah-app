@@ -35,6 +35,7 @@ class CompanyProfile extends Controller
             $default_design = Profile::where('default_design', '1')->first();
             $custom_design = Profile::where('default_design', '0')->first();
         }
+
         return view('logged_in.manage.company_profile.main', compact('data', 'count', 'default_design', 'custom_design'));
     }
 
@@ -44,6 +45,7 @@ class CompanyProfile extends Controller
         $this->must_field($field);
         $data = Profile::where('default_design', $field == "custom" ? 0 : 1)->first();
         $capitalizeTitle = Str::ucfirst($field);
+
         $lowerTitle = $field  == 'custom ' ? 'deskripsi' : $field;
 
         return view('logged_in.manage.company_profile.field', compact('capitalizeTitle', 'lowerTitle', 'data'));
@@ -58,9 +60,31 @@ class CompanyProfile extends Controller
             'deskripsi' => 'sometimes|required',
             'visi' => 'sometimes|required',
             'misi' => 'sometimes|required',
+            'gambar.*' => 'sometimes|required'
         ]);
-
         $design = $field == 'custom' ? 0 : 1;
+
+        if ($request->gambar_ori || $request->gambar_lama) {
+            $gambar_lama = collect(json_decode($request->gambar_lama));
+            $diff = $gambar_lama->diff($request->gambar_ori);
+            $diff = $diff->all();
+
+            if (count($diff) > 0) {
+                foreach ($diff as $img) {
+                    unlink('images/company_profile/' . $img);
+                }
+            }
+            $request['deskripsi'] = json_encode($request->gambar_ori);
+        }
+
+        if ($request->hasFile('gambar')) {
+
+            foreach ($request->file('gambar') as $file) {
+                $name =  $file->getClientOriginalName();
+                $file->move('images/company_profile/', $name);
+            }
+        }
+
 
         Profile::updateOrCreate(
             ['default_design' => $design],

@@ -20,7 +20,7 @@
 <div class="card menu mb-5" style="margin-top: 5rem;">
     <div class="card-header fs-5 sticky-top bg-light">Harus Diisi</div>
     <div class="card-body bg-light p-0">
-        <a href="{{route('user.setting.field',[$user->email,'name'])}}" class="item p-2 bg-white">
+        <a href="{{route('user.setting.field',[$user->email,'name'])}}" class="item p-2 bg-white border-bottom">
             <div class="top d-flex  align-items-center justify-content-between">
 
                 <div class=" lh-sm ms-2">Nama</div>
@@ -30,7 +30,7 @@
                 </span>
             </div>
         </a>
-        <a href="{{route('user.setting.field',[$user->email,'email'])}}" class="item p-2 bg-white">
+        <a href="{{route('user.setting.field',[$user->email,'email'])}}" class="item p-2 bg-white border-bottom">
             <div class="top d-flex  align-items-center justify-content-between">
 
                 <div class=" lh-sm ms-2">Email</div>
@@ -54,7 +54,7 @@
 <div class="card menu my-5">
     <div class="card-header fs-5 sticky-top bg-light">Opsional</div>
     <div class="card-body bg-light p-0">
-        <a href="{{route('user.setting.field',[$user->email,'address'])}}" class="item p-2 bg-white">
+        <a href="{{route('user.setting.field',[$user->email,'address'])}}" class="item p-2 bg-white border-bottom">
             <div class="top ">
                 <div class="row">
                     <div class="col-6">
@@ -75,7 +75,7 @@
 
             </div>
         </a>
-        <a href="{{route('user.setting.field',[$user->email,'gender'])}}" class="item p-2 bg-white">
+        <a href="{{route('user.setting.field',[$user->email,'gender'])}}" class="item p-2 bg-white border-bottom">
             <div class="top d-flex  align-items-center justify-content-between">
 
                 <div class=" lh-sm ms-2">Jenis Kelamin</div>

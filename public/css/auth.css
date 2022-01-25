@@ -19,13 +19,13 @@
     width: calc(3vw + 150px);
     height: calc(3vw + 150px);
 }
-.container {
+/* .container {
     position: absolute;
     top: 50%;
     left: 50%;
 
     transform: translate(-50%, -50%);
-}
+} */
 /* .parent::after {
     content: "";
     z-index: 2;

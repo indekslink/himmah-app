@@ -4,14 +4,25 @@ body::-webkit-scrollbar {
 }
 /* Hide scrollbar for IE, Edge and Firefox */
 body {
+    background-color: #eaeaea;
     -ms-overflow-style: none !important; /* IE and Edge */
     scrollbar-width: none !important; /* Firefox */
 }
 .font-logo {
     font-family: var(--fontLogo) !important;
 }
+.my-primary-bg-color {
+    background-image: linear-gradient(to bottom, #113905, #082102);
+    color: white;
+}
+.my-primary-bg-color:hover {
+    color: white !important;
+}
+.my-primary-color {
+    color: #076d15;
+}
 .space-y {
-    height: 1.5rem;
+    height: 1rem;
     width: 100vw;
     position: relative;
     left: 50%;
@@ -24,8 +35,8 @@ body {
 }
 .form-control:focus,
 .form-select:focus {
-    border-color: #07971a !important;
-    box-shadow: 0 0 0 0.25rem rgba(61, 253, 13, 0.25);
+    border-color: #076d15 !important;
+    box-shadow: 0 0 0 0.25rem hsl(129, 37%, 68%);
 }
 .form-floating.toggle-password {
     position: relative;
@@ -45,7 +56,7 @@ i.toggle-password {
 .card.menu {
     border: none !important;
 }
-i.icon-back {
+.icon-back {
     position: absolute;
     left: -10px;
     top: 50%;
@@ -53,7 +64,7 @@ i.icon-back {
     font-size: 3rem;
     cursor: pointer;
 }
-i.icon-back.auth {
+.icon-back.auth {
     position: fixed;
     top: 1.5rem;
     left: 0;

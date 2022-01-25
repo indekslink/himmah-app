@@ -9,6 +9,7 @@ use App\Http\Controllers\{
     HimmahStoreController as HimmahStore,
 
     ShopUserController,
+    SuspendController,
 };
 
 use App\Http\Controllers\Manage\{
@@ -74,22 +75,41 @@ Route::group(['prefix' => 'store/shop'], function () {
 });
 
 // controller Himmah Store
-Route::resource('store', HimmahStore::class);
 
-Route::prefix('store/{store:slug}')->group(function () {
-    Route::get('/{product:slug}', [HimmahStore::class, 'detail_produk'])->name('detail_produk');
-});
+
+    Route::resource('store', HimmahStore::class);
+    
+    Route::get('/store/categories/{slug}', [HimmahStore::class, 'getAllcategories'])->name('getAllProductOfCategories');
+    
+    Route::prefix('store/{store:slug}')->group(function () {
+        Route::get('/detail', [HimmahStore::class, 'detail_store'])->name('detail_store');
+        Route::get('/categories', [HimmahStore::class, 'get_categories_store'])->name("kategori_toko");
+        Route::get('/categories/{slug}', [HimmahStore::class, 'detail_product_of_categories'])->name("detail_product_of_categories");
+        Route::get('/{product:slug}', [HimmahStore::class, 'detail_produk'])->name('detail_produk');
+    });
+
 // end controller Himmah Store
 
 
-
+// Route::post('upload-image', [UserController::class, 'editor_upload_img'])->name('uploadImage');
 Route::group(['middleware' => ['auth', 'verified']], function () {
 
     Route::prefix('{email}')->middleware('isAuthUser')->group(function () {
+
         Route::get('/', [UserController::class, 'index'])->name('user.index');
         Route::get('/settings', [UserController::class, 'pengaturan_akun'])->name('user.setting');
         Route::get('/settings/{field}', [UserController::class, 'field_pengaturan_akun'])->name('user.setting.field');
         Route::post('/settings/{field}', [UserController::class, 'store_field_pengaturan_akun'])->name('user.setting.field.store');
+
+
+
+
+        // route for suspend a store of user
+        Route::post('/suspend/store/{slug}', [SuspendController::class, 'store_suspend'])->name('suspend.store')->middleware('isRole:super_admin,admin');
+        Route::delete('/suspend/store/{slug}', [SuspendController::class, 'delete_suspend'])->name('suspend.delete')->middleware('isRole:super_admin,admin');
+        // end
+
+
 
 
         Route::middleware('OnlyHaventStore')->group(function () {
@@ -116,6 +136,10 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::get('/company-profile/{field}', [ManageCompanyProfile::class, 'view_field'])->name('manage.company.profile.field');
         Route::post('/company-profile/{field}', [ManageCompanyProfile::class, 'store_field'])->name('manage.company.profile.field.store');
 
+
+
+
+        Route::get('/all-store', [HimmahStore::class, 'all_store'])->name('allStore');
 
         // controller Jadwal/Paket Umroh
         Route::resource('paket-umroh', PaketUmrohController::class);

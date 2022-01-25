@@ -2,10 +2,11 @@
 @section('title','Company Profile')
 
 @section('content')
-<div class=" py-2 nav-header sticky-top text-center">
+@include('partials.header.himmahGroup',['withBack'=>'yes'])
+<!-- <div class=" py-2 nav-header sticky-top text-center">
     <i data-current-page="{{route('home')}}" class="bi bi-arrow-left-short icon-back"></i>
     <div class="fs-4 fw-bold">Company Profile</div>
-</div>
+</div> -->
 @if($data)
 @if($data->default_design == '1')
 
@@ -37,7 +38,14 @@
     <!-- end visi misi -->
 </div>
 @else
-{!! $data->deskripsi !!}
+<div class="row justify-content-center">
+    @foreach(reverse_array(json_decode($data->deskripsi)) as $g)
+    <div class="col-md-10 col-lg-8 col-12">
+        <img src="{{avatar($g,'/images/company_profile/')}}" alt="" class="w-100">
+    </div>
+
+    @endforeach
+</div>
 @endif
 @else
 <div class="fs-4 mt-4 text-center">Data Profil Perusahaan Belum dibuat / Admin belum memilih desain yang akan diaktifkan</div>
