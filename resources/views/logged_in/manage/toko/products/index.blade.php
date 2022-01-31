@@ -1,8 +1,9 @@
 @extends('layouts.main')
 @section('title','Produk')
-
+@include('partials.header.page',['title'=>'Produk','withBack'=>"yes"])
 @section('content')
-<div class="fixed-top bg-white">
+<div class="data-current-page d-none">{{route('manage.shop.user',emailLogin())}}</div>
+<!-- <div class="fixed-top bg-white">
     <div class="container">
 
         <div class="row justify-content-center">
@@ -14,17 +15,17 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 
-<div style="margin-top: 5rem;">
+<div>
     @if(session('success'))
     <div class="alert alert-success mb-4 alert-dismissible fade show" role="alert">
         {{ session('success') }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
-    <a href="{{route('products.create',emailLogin())}}" class="btn btn-success">Tambah Data</a>
+    <a href="{{route('products.create',emailLogin())}}" class="btn my-primary-bg-color">Tambah Data</a>
     <div class="table-responsive  mt-4">
 
         <table class="table">

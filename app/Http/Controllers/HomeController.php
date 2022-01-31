@@ -22,4 +22,8 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function manage_beranda()
+    {
+        return view('logged_in.manage.beranda.index');
+    }
 }

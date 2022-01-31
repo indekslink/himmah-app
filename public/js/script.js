@@ -1,6 +1,7 @@
 let iconBackPage = document.querySelector(".icon-back");
 if (iconBackPage) {
     iconBackPage.addEventListener("click", function () {
+        toggleLoadingLogo();
         if (iconBackPage.hasAttribute("data-current-page")) {
             return (window.location =
                 iconBackPage.getAttribute("data-current-page"));
@@ -130,4 +131,9 @@ if (myModalEl) {
 function filterAction(href) {
     toggleLoadingLogo();
     window.location.href = href;
+}
+
+function backPage() {
+    const href = document.querySelector(".data-current-page").textContent;
+    filterAction(href)
 }

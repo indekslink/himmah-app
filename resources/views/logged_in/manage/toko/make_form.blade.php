@@ -1,8 +1,10 @@
 @extends('layouts.main')
 @section('title','Buat Toko')
+@include('partials.header.page',['title'=>'Buat Toko','withBack'=>"yes"])
 
 @section('content')
-<div class="fixed-top bg-white">
+<div class="data-current-page d-none">{{route('buat_toko',emailLogin())}}</div>
+<!-- <div class="fixed-top bg-white">
     <div class="container">
 
         <div class="row justify-content-center">
@@ -14,9 +16,9 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
-<div style="margin-top: 5rem;" class="mb-5">
+<div class="mb-5">
     <form action="{{route('store_shop',emailLogin())}}" onsubmit="toggleLoadingAction()" method="post" enctype="multipart/form-data">
         @csrf
 

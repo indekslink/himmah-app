@@ -1,8 +1,9 @@
 @extends('layouts.main')
 @section('title','Detail Kategori')
-
+@include('partials.header.page',['title'=>'Detail Kategori','withBack'=>"yes"])
 @section('content')
-<div class="fixed-top bg-white">
+<div class="data-current-page d-none">{{route('categories.index',emailLogin())}}</div>
+<!-- <div class="fixed-top bg-white">
     <div class="container">
 
         <div class="row justify-content-center">
@@ -14,9 +15,9 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
-<div style="margin-top: 5rem;">
+<div>
     <div class="row mb-4">
         <div class="col-6">
             <form action="{{route('categories.destroy',[emailLogin(),$data->slug])}}" method="post" onsubmit="toggleLoadingLogo(event,'Apakah anda yakin ingin menghapus data ini ?')">

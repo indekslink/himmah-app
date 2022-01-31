@@ -77,16 +77,16 @@ Route::group(['prefix' => 'store/shop'], function () {
 // controller Himmah Store
 
 
-    Route::resource('store', HimmahStore::class);
-    
-    Route::get('/store/categories/{slug}', [HimmahStore::class, 'getAllcategories'])->name('getAllProductOfCategories');
-    
-    Route::prefix('store/{store:slug}')->group(function () {
-        Route::get('/detail', [HimmahStore::class, 'detail_store'])->name('detail_store');
-        Route::get('/categories', [HimmahStore::class, 'get_categories_store'])->name("kategori_toko");
-        Route::get('/categories/{slug}', [HimmahStore::class, 'detail_product_of_categories'])->name("detail_product_of_categories");
-        Route::get('/{product:slug}', [HimmahStore::class, 'detail_produk'])->name('detail_produk');
-    });
+Route::resource('store', HimmahStore::class);
+
+Route::get('/store/categories/{slug}', [HimmahStore::class, 'getAllcategories'])->name('getAllProductOfCategories');
+
+Route::prefix('store/{store:slug}')->group(function () {
+    Route::get('/detail', [HimmahStore::class, 'detail_store'])->name('detail_store');
+    Route::get('/categories', [HimmahStore::class, 'get_categories_store'])->name("kategori_toko");
+    Route::get('/categories/{slug}', [HimmahStore::class, 'detail_product_of_categories'])->name("detail_product_of_categories");
+    Route::get('/{product:slug}', [HimmahStore::class, 'detail_produk'])->name('detail_produk');
+});
 
 // end controller Himmah Store
 
@@ -131,20 +131,25 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     });
 
     Route::prefix('manage')->middleware('isRole:super_admin,admin')->group(function () {
-        Route::get('/company-profile', [ManageCompanyProfile::class, 'get'])->name('manage.company.profile');
+        Route::prefix('beranda')->group(function () {
+            Route::get('/', [HomeController::class, 'manage_beranda'])->name('manage.beranda');
 
-        Route::get('/company-profile/{field}', [ManageCompanyProfile::class, 'view_field'])->name('manage.company.profile.field');
-        Route::post('/company-profile/{field}', [ManageCompanyProfile::class, 'store_field'])->name('manage.company.profile.field.store');
+            Route::get('/company-profile', [ManageCompanyProfile::class, 'get'])->name('manage.company.profile');
+            Route::get('/company-profile/{field}', [ManageCompanyProfile::class, 'view_field'])->name('manage.company.profile.field');
+            Route::post('/company-profile/{field}', [ManageCompanyProfile::class, 'store_field'])->name('manage.company.profile.field.store');
+
+            // controller Jadwal/Paket Umroh
+            Route::resource('paket-umroh', PaketUmrohController::class);
+            // end controller
+        });
+        // Route::get('/company-profile', [ManageCompanyProfile::class, 'get'])->name('manage.company.profile');
+
+        // Route::get('/company-profile/{field}', [ManageCompanyProfile::class, 'view_field'])->name('manage.company.profile.field');
+        // Route::post('/company-profile/{field}', [ManageCompanyProfile::class, 'store_field'])->name('manage.company.profile.field.store');
 
 
 
 
         Route::get('/all-store', [HimmahStore::class, 'all_store'])->name('allStore');
-
-        // controller Jadwal/Paket Umroh
-        Route::resource('paket-umroh', PaketUmrohController::class);
-        // end controller
-
-
     });
 });

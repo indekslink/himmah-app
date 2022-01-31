@@ -42,7 +42,7 @@ class UserController extends Controller
         $user = User::with('status_user')->whereEmail($email)->firstOrFail();
         $section_admin = ['super_admin', 'admin'];
 
-        return view('logged_in.user.index', compact('user', 'section_admin'));
+        return view('logged_in.user.index_redesign', compact('user', 'section_admin'));
     }
 
     public function pengaturan_akun($email)

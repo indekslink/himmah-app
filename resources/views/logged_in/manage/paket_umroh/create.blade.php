@@ -1,8 +1,8 @@
 @extends('layouts.main')
 @section('title','Tambah Data Paket Umroh')
-
+@include('partials.header.page',['title'=>'Tambah Data Paket Haji & Umroh','withBack'=>"yes"])
 @section('content')
-<div class="fixed-top bg-white">
+<!-- <div class="fixed-top bg-white">
     <div class="container">
 
         <div class="row justify-content-center">
@@ -14,20 +14,20 @@
             </div>
         </div>
     </div>
-</div>
-
-<div style="margin-top: 5rem;">
+</div> -->
+<div class="data-current-page d-none">{{route("paket-umroh.index")}}</div>
+<div>
     <form action="{{route('paket-umroh.store')}}" method="post" onsubmit="toggleLoadingAction()" enctype="multipart/form-data">
         @csrf
 
         <div class="row mb-4 align-items-center">
-            <div class="col-4">
+            <div class="col-4 parent-preview-gambar d-none">
                 <img src="{{asset('images/paket-umroh/default.png')}}" alt="preview gambar" class="preview img-fluid img-thumbnail">
                 <small class="text-info img-default">*Gambar default</small>
             </div>
-            <div class="col-8">
+            <div class="col-12 parent-input-gambar">
                 <div>
-                    <label for="formFile" class="form-label">Upload File</label>
+                    <label for="formFile" class="form-label">Upload Gambar</label>
                     <input class="form-control @error('gambar') is-invalid @enderror" name="gambar" type="file" id="formFile">
                     @error('gambar')
                     <span class="invalid-feedback" role="alert">
@@ -85,9 +85,15 @@
     const preview = document.querySelector('img.preview');
     const inputGambar = document.querySelector('input#formFile');
     const infoDefault = document.querySelector('small.img-default');
+    const parentInputGambar = document.querySelector('.parent-input-gambar');
     inputGambar.addEventListener('change', function(e) {
         const [file] = e.target.files
         if (file) {
+            parentInputGambar.classList.remove('col-12');
+            parentInputGambar.classList.add('col-8');
+
+            document.querySelector('.parent-preview-gambar').classList.remove('d-none')
+
             preview.src = URL.createObjectURL(file)
             infoDefault.classList.add('d-none');
         }

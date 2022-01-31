@@ -1,8 +1,9 @@
 @extends('layouts.main')
 @section('title','Tambah Data Produk')
-
+@include('partials.header.page',['title'=>'Tambah Data Produk','withBack'=>"yes"])
 @section('content')
-<div class="fixed-top bg-white">
+<div class="data-current-page d-none">{{route('products.index',emailLogin())}}</div>
+<!-- <div class="fixed-top bg-white">
     <div class="container">
 
         <div class="row justify-content-center">
@@ -14,9 +15,9 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
-<div style="margin-top: 5rem;">
+<div>
     <form action="{{route('products.store',emailLogin())}}" method="post" onsubmit="toggleLoadingAction()" enctype="multipart/form-data">
         @csrf
 
@@ -87,6 +88,7 @@
                     <option value="" disabled>Data Kategori masih kosong!</option>
                     @endforelse
                 </optgroup>
+                @if($kategori_toko_lainnya->count() > 0)
                 <optgroup label="Kategori yg terdaftar">
 
                     @forelse($kategori_toko_lainnya as $ktg)
@@ -95,6 +97,7 @@
                     <option value="" disabled>Data Kategori masih kosong!</option>
                     @endforelse
                 </optgroup>
+                @endif
             </select>
 
         </div>
@@ -115,7 +118,7 @@
         <div class="d-flex align-items-center justify-content-end mb-4">
 
             <a href="{{route('products.index',emailLogin())}}" class="btn btn-danger me-2">Batal</a>
-            <button class="btn btn-success" type="submit">Simpan</button>
+            <button class="btn my-primary-bg-color" type="submit">Simpan</button>
         </div>
     </form>
 </div>

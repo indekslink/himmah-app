@@ -7,23 +7,23 @@
 @section('content')
 <div>
     <!-- section header top -->
-    <div class="fixed-top bg-white shadow-sm">
-        <div class="container py-2 px-3">
+    <div class="fixed-top header-top text-light  shadow-sm">
+        <div class="container py-2 mb-2 px-3">
 
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-md-10">
-                    <div class="d-flex align-items-center justify-content-between  logo-place">
-                        <div class="d-flex align-items-center">
+                    <div class="d-flex align-items-center  justify-content-between  logo-place">
+                        <div class="d-flex align-items-center text-truncate">
 
                             <i class="bi bi-shop fs-1 me-4"></i>
 
-                            <div class="text-center text-truncate">
+                            <div class="text-center  ">
 
                                 <div class="fs-3 font-logo">{{auth()->user()->store->nama}}</div>
                             </div>
                         </div>
 
-                        <a href="{{route('store.show',auth()->user()->store->slug)}}" class="btn btn-outline-success">Lihat Toko</a>
+                        <a href="{{route('store.show',auth()->user()->store->slug)}}" class="btn btn-outline-light text-truncate">Lihat Toko</a>
 
                     </div>
                 </div>
@@ -56,19 +56,19 @@
     </div>
     @endif
 
-    <div class="card menu my-2 pt-sm-3">
-        <div class="card-header  sticky-top ps-0 fw-bold bg-white">
+    <div class="card menu bg-transparent my-2 pt-sm-3">
+        <div class="card-header bg-transparent border-0 sticky-top ps-0 fw-bold ">
             <div class="fs-5">Informasi Toko</div>
 
         </div>
-        <div class="card-body bg-light p-0">
-            <div class="p-2 ps-0 bg-white border-bottom">
+        <div class="card-body  p-0">
+            <div class="p-2 ps-0  border-bottom">
                 <div class="row align-items-center">
                     <div class="col-4">
                         <img src="{{avatar(auth()->user()->store->avatar,'/images/store/logo/')}}" alt="" class="img-fluid">
                     </div>
                     <div class="col-8">
-                        <div class="fs-5 fw-bold lh-sm mb-4">{{auth()->user()->store->nama}}</div>
+                        <div class="fs-5 fw-bold lh-sm mb-4 text-truncate">{{auth()->user()->store->nama}}</div>
 
                         <div class="d-flex align-items-center">
                             <div class="item text-center me-4">
@@ -83,47 +83,47 @@
                     </div>
                 </div>
             </div>
-            <a href="{{route('manage.shop.user.edit',emailLogin())}}" class="item p-2 ps-0 bg-white">
+            <a href="{{route('manage.shop.user.edit',emailLogin())}}" class="item p-2 ps-0 border-secondary border-1 border-top ">
                 <div class="top d-flex  align-items-center justify-content-between">
                     <div class="d-flex align-items-center">
                         <div class=" lh-sm">Edit Data Toko</div>
                     </div>
-                    <i class="bi bi-chevron-right fs-4"></i>
+                    <i class="bi bi-chevron-right fs-6"></i>
                 </div>
             </a>
 
 
         </div>
     </div>
-    <div class="space-y bg-light "></div>
+    <div class="space-y  "></div>
 
-    <div class="card menu my-2">
-        <div class="card-header  sticky-top ps-0 fw-bold bg-white">
+    <div class="card menu bg-transparent my-2">
+        <div class="card-header bg-transparent border-0  sticky-top ps-0 fw-bold ">
             <div class="fs-5">Kelola</div>
 
         </div>
-        <div class="card-body bg-light p-0">
-            <a href="{{route('categories.index',emailLogin())}}" class="item p-2 ps-0 bg-white border-bottom">
+        <div class="card-body  p-0">
+            <a href="{{route('categories.index',emailLogin())}}" class="item p-2 ps-0  ">
                 <div class="top d-flex  align-items-center justify-content-between">
                     <div class="d-flex align-items-center">
                         <div class=" lh-sm">Kategori</div>
                     </div>
-                    <i class="bi bi-chevron-right fs-4"></i>
+                    <i class="bi bi-chevron-right fs-6"></i>
                 </div>
             </a>
-            <a href="{{route('products.index',emailLogin())}}" class="item p-2 ps-0 bg-white">
+            <a href="{{route('products.index',emailLogin())}}" class="item p-2 ps-0 border-secondary border-1 border-top ">
                 <div class="top d-flex  align-items-center justify-content-between">
                     <div class="d-flex align-items-center">
                         <div class=" lh-sm">Produk</div>
                     </div>
-                    <i class="bi bi-chevron-right fs-4"></i>
+                    <i class="bi bi-chevron-right fs-6"></i>
                 </div>
             </a>
 
         </div>
     </div>
 
-    <!-- <div class="space-y bg-light mt-4"></div> -->
+    <!-- <div class="space-y  mt-4"></div> -->
 
 </div>
 

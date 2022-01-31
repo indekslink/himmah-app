@@ -1,18 +1,31 @@
 @extends('layouts.main')
-@section('title','Company Profile')
+@section('title','Profil Perusahaan')
 
 @section('content')
-@include('partials.header.himmahGroup',['withBack'=>'yes'])
+@include('partials.header.page',['title'=>'Profil Perusahaan','withBack'=>'yes'])
 <!-- <div class=" py-2 nav-header sticky-top text-center">
     <i data-current-page="{{route('home')}}" class="bi bi-arrow-left-short icon-back"></i>
     <div class="fs-4 fw-bold">Company Profile</div>
 </div> -->
+<div class="data-current-page d-none">{{route("home")}}</div>
+<div class="text-center">
+    <img src="{{asset('/images/LOGO-HIMMAH-GROUP.png')}}" class="me-4" style="width: 100px;height:100px;" alt="logo himmah">
+    <div class=" my-primary-color-darken mt-3">
+        <div class="fw-bold font-header fs-4">KANTOR PUSAT INFORMASI <br /> PT. HIJRAH MAKKAH MADINAH</div>
+        <small class="d-block font-header fw-bold"> - BIRO PERJALANAN WISATA & UMROH - </small>
+    </div>
+    <div class="my-primary-color-darken fw-bold mt-2 mb-4"><small>SK PPIU IZIN NO. 91203054620550001</small></div>
+
+    <!-- <div class="my-4 fs-2 fw-bold my-primay-color">
+        Profil Perusahaan
+    </div> -->
+</div>
 @if($data)
 @if($data->default_design == '1')
 
 <div class="value text-justify mt-4">
     <div class="mb-3 d-flex align-items-center">
-        <img src="{{asset('/images/LOGO-HIMMAH.png')}}" class="me-4" style="width: 100px;height:100px;" alt="logo himmah">
+        <img src="{{asset('/images/LOGO-HIMMAH-GROUP.png')}}" class="me-4" style="width: 100px;height:100px;" alt="logo himmah">
         <div class="lh-sm">
 
             <div class="fs-3 font-logo fw-bold">HIMMAH</div>
@@ -38,17 +51,15 @@
     <!-- end visi misi -->
 </div>
 @else
-<div class="row justify-content-center">
+<div class="row justify-content-center gy-2 mb-2">
     @foreach(reverse_array(json_decode($data->deskripsi)) as $g)
-    <div class="col-md-10 col-lg-8 col-12">
+    <div class="col-12">
         <img src="{{avatar($g,'/images/company_profile/')}}" alt="" class="w-100">
     </div>
-
     @endforeach
 </div>
 @endif
-@else
-<div class="fs-4 mt-4 text-center">Data Profil Perusahaan Belum dibuat / Admin belum memilih desain yang akan diaktifkan</div>
+
 @endif
 @endsection
 

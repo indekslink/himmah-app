@@ -1,8 +1,9 @@
 @extends('layouts.main')
 @section('title','Edit Data Produk')
-
+@include('partials.header.page',['title'=>'Edit Data Produk','withBack'=>"yes"])
 @section('content')
-<div class="fixed-top bg-white">
+<div class="data-current-page d-none">{{route('products.update',[emailLogin(),$product->slug])}}</div>
+<!-- <div class="fixed-top bg-white">
     <div class="container">
 
         <div class="row justify-content-center">
@@ -14,9 +15,9 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
-<div style="margin-top: 5rem;">
+<div>
     <form action="{{route('products.update',[emailLogin(),$product->slug])}}" method="post" onsubmit="toggleLoadingAction()" enctype="multipart/form-data">
         @csrf
 
@@ -31,7 +32,7 @@
             </ul>
         </div>
         @endif
-        <div class="mb-4 card rounded-3 p-2">
+        <div class="mb-4 card bg-tranparent rounded-3 p-2">
             <div class="mb-4    ">
                 <button type="button" class="btn btn-outline-primary w-100" onclick="tambahGambar('{{$product->gambar}}')">Tambah Gambar</button>
             </div>
@@ -54,16 +55,16 @@
                         </div>
 
 
-                        <div class="row">
+                        <div class="row g-2">
                             <div class="col-6 action-ubah">
-                                <button type="button" class="btn btn-warning btn-sm d-block w-100">
-                                    Ubah
+                                <button type="button" class="btn text-truncate  btn-warning btn-sm d-block w-100">
+                                    <i class="bi bi-pencil-square"></i>
                                 </button>
                                 <input type="file" name="gambar_pengganti[]" onchange="previewGambar(event,'img.preview-gambar-{{$loop->iteration}}','input.nama-gambar-{{$loop->iteration}}','radio-{{$loop->iteration}}')">
                             </div>
                             <div class="col-6">
-                                <button type="button" class="btn btn-outline-danger btn-sm d-block w-100" onclick="removeItem('{{$loop->iteration}}','radio-{{$loop->iteration}}')">
-                                    Hapus
+                                <button type="button" class="btn  text-truncate btn-outline-danger btn-sm d-block w-100" onclick="removeItem('{{$loop->iteration}}','radio-{{$loop->iteration}}')">
+                                    <i class="bi bi-trash"></i>
                                 </button>
                             </div>
                         </div>
@@ -131,10 +132,10 @@
         </div>
 
 
-        <div class="d-flex align-items-center justify-content-end">
+        <div class="d-flex align-items-center justify-content-end mb-4">
 
             <a href="{{route('products.index',emailLogin())}}" class="btn btn-danger me-2">Batal</a>
-            <button class="btn btn-success" type="submit">Simpan</button>
+            <button class="btn my-primary-bg-color" type="submit">Simpan</button>
         </div>
     </form>
 </div>

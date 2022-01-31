@@ -1,8 +1,9 @@
 @extends('layouts.main')
 @section('title',$data->judul)
-
+@include('partials.header.page',['title'=>'Detail Paket','withBack'=>"yes"])
 @section('content')
-<div class="fixed-top bg-white">
+<div class="data-current-page d-none">{{route("home.paket-umroh")}}</div>
+<!-- <div class="fixed-top bg-white">
     <div class="container">
 
         <div class="row justify-content-center">
@@ -14,9 +15,9 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
-<div style="margin-top: 5rem;">
+<div>
 
     <div class="row g-4 justify-content-center">
         <div class="col-12">

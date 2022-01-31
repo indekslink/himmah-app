@@ -1,8 +1,8 @@
 @extends('layouts.main')
 @section('title','Edit Paket Umroh')
-
+@include('partials.header.page',['title'=>'Edit Paket Umroh','withBack'=>"yes"])
 @section('content')
-<div class="fixed-top bg-white">
+<!-- <div class="fixed-top bg-white">
     <div class="container">
 
         <div class="row justify-content-center">
@@ -14,9 +14,9 @@
             </div>
         </div>
     </div>
-</div>
-
-<div style="margin-top: 5rem;">
+</div> -->
+<div class="data-current-page d-none">{{route("paket-umroh.show",$data->slug)}}</div>
+<div>
     <form action="{{route('paket-umroh.update',$data->slug)}}" onsubmit="toggleLoadingAction()" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')

@@ -144,13 +144,13 @@ class CategoryController extends Controller
             $file = $request->file('gambar');
             $name = Str::slug(explode('.', $file->getClientOriginalName())[0]) . '_' . time();
             $name = $name . '.' . $file->getClientOriginalExtension(); // add extension
-            if ($name != 'default.png') {
+            $fileLama =  $category->gambar;
+            if ($name != $fileLama) {
 
-                $fileLama =  $category->gambar;
-                if ($name != $fileLama) {
+                if ($fileLama != 'default.png') {
                     unlink('images/store/kategori/' . $fileLama);
-                    $file->move('images/store/kategori/', $name);
                 }
+                $file->move('images/store/kategori/', $name);
                 $category->gambar = $name;
             }
         }

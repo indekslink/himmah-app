@@ -1,8 +1,8 @@
 @extends('layouts.main')
-@section('title','Kelola Paket Umroh')
-
+@section('title','Kelola Paket Haji & Umroh')
+@include('partials.header.page',['title'=>'Kelola Paket Haji & Umroh','withBack'=>"yes"])
 @section('content')
-<div class="fixed-top bg-white">
+<!-- <div class="fixed-top bg-white">
     <div class="container">
 
         <div class="row justify-content-center">
@@ -14,16 +14,17 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+<div class="data-current-page d-none">{{route("manage.beranda")}}</div>
 
-<div style="margin-top: 5rem;">
+<div>
     @if(session('success'))
     <div class="alert alert-success mb-4 alert-dismissible fade show" role="alert">
         {{ session('success') }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
-    <a href="{{route('paket-umroh.create')}}" class="btn btn-success">Tambah Data</a>
+    <a href="{{route('paket-umroh.create')}}" class="btn my-primary-bg-color-outline">Tambah Data</a>
     <table class="table mt-4">
         <thead>
             <tr>

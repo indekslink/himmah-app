@@ -1,8 +1,9 @@
 @extends('layouts.main')
 @section('title','Edit Kategori')
-
+@include('partials.header.page',['title'=>'Edit Kategori','withBack'=>"yes"])
 @section('content')
-<div class="fixed-top bg-white">
+<div class="data-current-page d-none">{{route('categories.show',[emailLogin(),$category->slug])}}</div>
+<!-- <div class="fixed-top bg-white">
     <div class="container">
 
         <div class="row justify-content-center">
@@ -14,16 +15,16 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
-<div style="margin-top: 5rem;">
+<div>
     <form action="{{route('categories.update',[emailLogin(),$category->slug])}}" onsubmit="toggleLoadingAction()" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="row mb-4 align-items-center">
             <div class="col-4">
                 <img src="{{avatar($category->gambar,'/images/store/kategori/')}}" alt="preview gambar" class="preview img-fluid img-thumbnail">
-                <small class="text-info img-default">*Gambar default</small>
+
             </div>
             <div class="col-8">
                 <div>
@@ -50,7 +51,7 @@
         <div class="d-flex align-items-center justify-content-end">
 
             <a href="{{route('paket-umroh.show',$category->slug)}}" class="btn btn-danger me-2">Batal</a>
-            <button class="btn btn-success" type="submit">Update</button>
+            <button class="btn my-primary-bg-color" type="submit">Update</button>
         </div>
     </form>
 </div>

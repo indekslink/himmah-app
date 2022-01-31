@@ -36,7 +36,7 @@ class CompanyProfile extends Controller
             $custom_design = Profile::where('default_design', '0')->first();
         }
 
-        return view('logged_in.manage.company_profile.main', compact('data', 'count', 'default_design', 'custom_design'));
+        return view('logged_in.manage.company_profile.main_redesign', compact('data', 'count', 'default_design', 'custom_design'));
     }
 
     public function view_field($field)
@@ -48,7 +48,7 @@ class CompanyProfile extends Controller
 
         $lowerTitle = $field  == 'custom ' ? 'deskripsi' : $field;
 
-        return view('logged_in.manage.company_profile.field', compact('capitalizeTitle', 'lowerTitle', 'data'));
+        return view('logged_in.manage.company_profile.field_redesign', compact('capitalizeTitle', 'lowerTitle', 'data'));
     }
 
     public function store_field(Request $request, $field)
@@ -88,7 +88,10 @@ class CompanyProfile extends Controller
 
         Profile::updateOrCreate(
             ['default_design' => $design],
-            $request->only(['judul', 'deskripsi', 'visi', 'misi'])
+            $request->only(
+                ['judul', 'deskripsi', 'visi', 'misi', 'active']
+                // ['judul', 'deskripsi', 'visi', 'misi']
+            )
         );
 
         return redirect()->route('manage.company.profile')->with('success', Str::ucfirst($field) . ' Profil Perusahaan berhasil disimpan!');

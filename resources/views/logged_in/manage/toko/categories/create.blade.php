@@ -1,8 +1,9 @@
 @extends('layouts.main')
 @section('title','Tambah Data Kategori')
-
+@include('partials.header.page',['title'=>'Tambah Data Kategori','withBack'=>"yes"])
 @section('content')
-<div class="fixed-top bg-white">
+<div class="data-current-page d-none">{{route('categories.index',emailLogin())}}</div>
+<!-- <div class="fixed-top bg-white">
     <div class="container">
 
         <div class="row justify-content-center">
@@ -14,21 +15,21 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
-<div style="margin-top: 5rem;">
+<div>
     <form action="{{route('categories.store',emailLogin())}}" method="post" onsubmit="toggleLoadingAction()" enctype="multipart/form-data">
         @csrf
 
         <div class="row mb-4 align-items-center">
             <div class="col-4">
                 <img src="{{avatar('store-bw.png','/images/')}}" alt="Gambar Kategori" class="preview img-fluid img-thumbnail">
-                <small class="text-info img-default">*Gambar default</small>
+
             </div>
             <div class="col-8">
                 <div>
                     <label for="formFile" class="form-label">Upload File</label>
-                    <input class="form-control @error('gambar') is-invalid @enderror" name="gambar" type="file" id="formFile">
+                    <input class="form-control @error('gambar') is-invalid @enderror" name="gambar" type="file" id="formFile" required accept=".jpg, .jpeg, .png">
                     @error('gambar')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -50,7 +51,7 @@
         <div class="d-flex align-items-center justify-content-end">
 
             <a href="{{route('categories.index',emailLogin())}}" class="btn btn-danger me-2">Batal</a>
-            <button class="btn btn-success" type="submit">Simpan</button>
+            <button class="btn my-primary-bg-color" type="submit">Simpan</button>
         </div>
     </form>
 </div>

@@ -1,8 +1,9 @@
 @extends('layouts.main')
 @section('title','Edit Data Toko')
-
+@include('partials.header.page',['title'=>'Edit Data Toko','withBack'=>"yes"])
 @section('content')
-<div class="fixed-top bg-white">
+<div class="data-current-page d-none">{{route('manage.shop.user',emailLogin())}}</div>
+<!-- <div class="fixed-top bg-white">
     <div class="container">
 
         <div class="row justify-content-center">
@@ -14,9 +15,9 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
-<div style="margin-top: 5rem;">
+<div>
 
     @if($errors->any())
     <ul>
@@ -94,7 +95,7 @@
         <div class="d-flex align-items-center justify-content-end mb-4">
 
             <a href="{{route('manage.shop.user',[emailLogin()])}}" class="btn btn-danger me-2">Batal</a>
-            <button class="btn btn-success" type="submit">Update</button>
+            <button class="btn my-primary-bg-color" type="submit">Update</button>
         </div>
     </form>
 </div>

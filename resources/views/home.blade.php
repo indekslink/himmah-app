@@ -27,31 +27,41 @@
 
     <div class="owl-carousel mt-4 owl-theme slide-home">
         <div class="item">
-            <img src="/new/badal haji.jpg" loading="lazy" alt="slide-image">
+
+            <a data-src="{{asset('/new/badal haji.jpg')}}" data-fancybox="slideHome" class="d-block w-100 cursor-pointer h-100">
+                <img src="/new/badal haji.jpg" loading="lazy" alt="slide-image">
+            </a>
             <!-- <div class="text">
                 <div class="fs-4 mb-2 fw-bold lh-sm ">Haji dan Umroh</div>
                 <small class="lh-sm d-block">Mari segera Daftarkan diri anda untuk segera berhaji/umroh tahun depan</small>
             </div> -->
         </div>
         <div class="item">
-            <img src="/new/badal UMRAH.jpg" loading="lazy" alt="slide-image">
+            <a data-src="{{asset('/new/badal UMRAH.jpg')}}" data-fancybox="slideHome" class="d-block w-100 cursor-pointer h-100">
+                <img src="/new/badal UMRAH.jpg" loading="lazy" alt="slide-image">
+            </a>
+        </div>
+        <div class="item">
+            <a data-src="{{asset('/new/brosur paket umroh MARET.jpg')}}" data-fancybox="slideHome" class="d-block w-100 cursor-pointer h-100">
+                <img src="/new/brosur paket umroh MARET.jpg" loading="lazy" alt="slide-image">
+            </a>
+        </div>
+        <div class="item">
+            <a data-src="{{asset('/new/paket umroh 18 maret.jpg')}}" data-fancybox="slideHome" class="d-block w-100 cursor-pointer h-100">
+                <img src="/new/paket umroh 18 maret.jpg" loading="lazy" alt="slide-image">
+            </a>
 
         </div>
         <div class="item">
-            <img src="/new/brosur paket umroh MARET.jpg" loading="lazy" alt="slide-image">
+            <a data-src="{{asset('/new/stand banner himmah card.jpg')}}" data-fancybox="slideHome" class="d-block w-100 cursor-pointer h-100">
+                <img src="/new/stand banner himmah card.jpg" loading="lazy" alt="slide-image">
+            </a>
 
         </div>
         <div class="item">
-            <img src="/new/paket umroh 18 maret.jpg" loading="lazy" alt="slide-image">
-
-        </div>
-        <div class="item">
-            <img src="/new/stand banner himmah card.jpg" loading="lazy" alt="slide-image">
-
-        </div>
-        <div class="item">
-            <img src="/new/stand banner MANASIK.jpg" loading="lazy" alt="slide-image">
-
+            <a data-src="{{asset('/new/stand banner MANASIK.jpg')}}" data-fancybox="slideHome" class="d-block w-100 cursor-pointer h-100">
+                <img src="/new/stand banner MANASIK.jpg" loading="lazy" alt="slide-image">
+            </a>
         </div>
 
     </div>
@@ -161,6 +171,7 @@
 
 @endsection
 @section('style')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css" />
 <link rel="stylesheet" href="{{asset('/vendor/owl-carousel/dist/assets/owl.carousel.min.css')}}" />
 <link rel="stylesheet" href="{{asset('/vendor/owl-carousel/dist/assets/owl.theme.green.min.css')}}" />
 <style>
@@ -206,6 +217,11 @@
     .slide-home .owl-item:not(.active) {
         transition: .5s ease-in-out;
         opacity: .6;
+    }
+
+    .slide-home .owl-item.active .item a {
+        position: relative;
+        z-index: 10;
     }
 
     .owl-theme .owl-dots .owl-dot span {
@@ -276,6 +292,7 @@
 @endsection
 
 @section('script')
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
 <script src="{{asset('/vendor/owl-carousel/dist/owl.carousel.min.js')}}"></script>
 <script>
     let owl = $('.owl-carousel.slide-home');
@@ -283,7 +300,7 @@
     owl.owlCarousel({
         stagePadding,
         margin: 20,
-        loop: true,
+
         items: 1,
         smartSpeed: 500,
         responsive: {
@@ -292,30 +309,30 @@
             }
         }
     })
-    // owl.on('changed.owl.carousel', function(event) {
-    //     const {
-    //         count,
-    //         index
-    //     } = event.item;
-    //     let padding = {};
-    //     if (index == 0) {
-    //         padding = {
-    //             'padding-left': '0',
-    //             'padding-right': stagePadding + 'px'
-    //         }
-    //     } else if (index === count - 1) {
-    //         padding = {
-    //             'padding-left': stagePadding * 2 + 'px',
-    //             'padding-right': '0'
-    //         }
-    //     } else {
-    //         padding = {
-    //             'padding-left': stagePadding + 'px',
-    //             'padding-right': stagePadding + 'px',
-    //         }
-    //     }
-    //     $('.owl-stage').css(padding)
-    // })
-    // $('.owl-stage').css('padding-left', '0')
+    owl.on('changed.owl.carousel', function(event) {
+        const {
+            count,
+            index
+        } = event.item;
+        let padding = {};
+        if (index == 0) {
+            padding = {
+                'padding-left': '0',
+                'padding-right': stagePadding + 'px'
+            }
+        } else if (index === count - 1) {
+            padding = {
+                'padding-left': stagePadding * 2 + 'px',
+                'padding-right': '0'
+            }
+        } else {
+            padding = {
+                'padding-left': stagePadding + 'px',
+                'padding-right': stagePadding + 'px',
+            }
+        }
+        $('.owl-stage').css(padding)
+    })
+    $('.owl-stage').css('padding-left', '0')
 </script>
 @endsection
